@@ -1,0 +1,39 @@
+.SideNavbar {
+    height: 100%;
+    width: 180px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .SideNavbar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+  }
+  
+  .SideNavbar a:hover {
+    background-color: #dd013f;
+  }
+
+  .SideNavbar a.active:hover {
+    background-color: white;
+  }
+
+  .navbarSeparator{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    
+  }
+
+
+  #LeipzigFocus.focus {
+    transform: scale(1.1); 
+  }
+
+  
+  
