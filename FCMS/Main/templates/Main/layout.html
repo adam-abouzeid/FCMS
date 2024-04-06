@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %} Main {% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'Main/style1.css '%}">
+        <script src="{% static 'Main/inbox1.js' %}"></script>
+    </head>
+    <body>
+        <div class="TopNavBar">
+            <a href="#" class="active" id="LeipzigFocus">
+                <img src="https://rp-online.de/imgs/32/6/4/8/1/5/2/9/9/tok_6875eade4dcdf0722a40c267dcaf4c8a/w1772_h1486_x886_y743_RB_Leipzig-a98841e8ba1bcab0.jpg" alt="Home" width="100" height="100">
+            </a>
+            <a href=""></a>
+        </div>
+        <div class="SideNavbar">
+
+            <a href="#" class="active" id="LeipzigFocus">
+                <img src="https://rp-online.de/imgs/32/6/4/8/1/5/2/9/9/tok_6875eade4dcdf0722a40c267dcaf4c8a/w1772_h1486_x886_y743_RB_Leipzig-a98841e8ba1bcab0.jpg" alt="Home" width="100" height="100">
+            </a>
+            <a href="#">Follow US!</a>
+            <a href="#">News</a>
+            <hr class="navbarSeparator">
+            <a href="#">Our Team</a>
+            <hr class="navbarSeparator">
+            <a href="#">Ticket Shop</a>
+            <hr class="navbarSeparator">
+            <a href="#">Online Shop</a>
+            <hr class="navbarSeparator">
+            <a href="#">Book Stadiums</a>
+            <hr class="navbarSeparator">
+            <a href="#">Join our Community</a>
+
+        </div>
+
+        {% block body %}
+
+        {% endblock %}
+    </body>
+</html>
