@@ -1,25 +1,50 @@
+main{ 
+  height: 100%;
+  width: 100%;
+  margin-left: 14rem; 
+  width: calc(100% - 14rem); 
+  padding: 1rem;
+}
+
+body{
+  color: #333;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+
+
 .SideNavbar {
-    height: 100%;
-    width: 180px;
+    height: 100vh;
+    width: 14rem;
     background-color: white;
     position: fixed;
     top: 0;
     left: 0;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 200ms ease;
+  
+    border: 1px solid #ccc;
   }
   
   .SideNavbar a {
     padding: 10px 15px;
     text-decoration: none;
+    width: 100%;
     display: block;
     color: #333;
   }
   
-  .SideNavbar a:hover {
+   a:hover {
     background-color: #dd013f;
   }
 
+ 
   .SideNavbar a.active:hover {
     background-color: white;
   }
@@ -30,10 +55,15 @@
     
   }
 
-
   #LeipzigFocus.focus {
     transform: scale(1.1); 
   }
+
+  
+
+
+  
+  
 
   
   

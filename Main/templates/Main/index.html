@@ -1,4 +1,11 @@
-{% extends "Main/layout.html" %} {% block body %}
+{% extends "Main/layout.html" %} 
+{% block body %}
 
-<h1>this is the homepage</h1>
+ <h1>Latest News</h1>
+ <ul>
+    {% for new in News %}   <!--I was thinking of creating a horizontal scroll for the news if you can implemn this-->
+    <li>{{new}}</li>
+    {% endfor %}
+ </ul>
+
 {% endblock %}
