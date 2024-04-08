@@ -3,6 +3,11 @@
 
 
 {% block body %}
+
+   <div class="Phrases">
+      <h1>Since 2009</h1>
+   </div>
+
    <h1 class="NewsTitle">Latest News:</h1>
    
    <div class="HorScroll">
@@ -46,5 +51,20 @@
         }\
       }';
       document.head.appendChild(style);
+
+      
+
+      function reShufflePhrases(){
+         PHRASES = ["#We_Are_Leipzig", "#Die_Roten_Bullen","#Follow_RB_LEIPZIG!","Since 2009"];
+         const container = document.querySelector(".Phrases h1");
+         var index = 0;
+
+         return function(){
+            container.innerHTML = PHRASES[index];
+            index = (index+1)%PHRASES.length;
+         };
+      }
+
+      var reshuffleInterval = setInterval(reShufflePhrases(), 2000);
    </script>
 {% endblock %}

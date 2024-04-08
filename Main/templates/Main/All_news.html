@@ -7,13 +7,64 @@
 
    <div>
     
-    <ul>
-        {% for new in News %}
-        <li>{{new}}</li>
-        {% endfor %}
-    </ul>
+    
+    {% for new in News %}
+
+    <a class="nostyle" href="{% url 'news_card' new.id %}">
+        <div class="card mb-3">
+            <img class="card-img-top" src="{{new.Image}}" alt="Card image cap" height="280px" width="30%">
+            <h5 class="card-title">{{new.title}}</h5>
+            <div class="card-body">
+              
+              <p class="card-text">{{new.description}}</p>
+              <p class="card-text"><small class="text-muted">Uploaded on {{new.date_uploaded}}</small></p>
+            </div>
+          </div>
+    </a>
+    
+
+        
+    {% endfor %}
+    
 
    </div>
+
+   <style>
+    .card {
+        margin-top: 7px;
+        border: 1px solid black;
+        position: relative;
+    }
+    .card-body{
+        text-align: center;
+        padding-top: 7px;
+        font-size: 17px;
+    }
+    .card-title{
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 40%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 40px;
+        font-weight: bolder;
+    }
+    .card{
+        color: inherit;
+    }
+    .nostyle {
+        text-decoration: none;
+        color: inherit;
+    }
+    .nostyle:hover {
+        text-decoration: none; 
+        color: inherit;
+    }
+
+    .nostyle .card-body:hover { 
+        text-decoration: underline;
+    }
+   </style>
 
 
 

@@ -10,8 +10,12 @@ from .util import *
 
 
 def index(request):
+
+    #STATIC 
+    #phrases = ["#We_Are_Leipzig", "#Die_Roten_Bullen","#Follow_RB_LEIPZIG!"]
+
     return render(request,"Main/index.html",{
-        "News": get_News()
+        "News": get_News(),
     })
 
 def news_card(request, id):
