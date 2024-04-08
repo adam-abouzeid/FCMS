@@ -13,3 +13,4 @@ def index(request):
     return render(request,"Main/index.html",{
         "News": get_News()
     })
+
