@@ -8,9 +8,13 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="{% static 'Main/style1.css '%}" />
+    <link rel="stylesheet" href="{% static 'Main/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'Main/styleIndex.css' %}" />
     <script src="{% static 'Main/inbox1.js' %}"></script>
+  
+
   </head>
+
   <body>
     <main>{% block body %} {% endblock %}</main>
 
@@ -19,7 +23,7 @@
     </div>
     <div class="SideNavbar">
       <!--Here we should add js code to make pressing each anchor tag responsive e.g if someone hoovers over Follow us they should see a mini pop up showing social media accounts-->
-      <a href="#" class="active" id="LeipzigFocus">
+      <a href="{% url 'index' %}" class="active" id="LeipzigFocus">
         <img
           src="https://rp-online.de/imgs/32/6/4/8/1/5/2/9/9/tok_6875eade4dcdf0722a40c267dcaf4c8a/w1772_h1486_x886_y743_RB_Leipzig-a98841e8ba1bcab0.jpg"
           alt="Home"
@@ -27,10 +31,10 @@
           height="100"
         />
       </a>
-      <a href="#">Follow US!</a>
-      <hr class="navbarSeparator" />
+      <a href="#">Follow US!</a>     
+      <hr class = "navbarSeparator" />                                                                                                                                                                                                                                            
       <a href="#">News</a>
-      <hr class="navbarSeparator" />
+      <hr class = "navbarSeparator" />
       <a href="#">Our Team</a>
       <hr class="navbarSeparator" />
       <a href="#">Ticket Shop</a>
