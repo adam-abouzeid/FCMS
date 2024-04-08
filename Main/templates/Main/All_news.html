@@ -1,0 +1,20 @@
+{% extends "Main/layout.html" %} 
+{% load static %}
+
+
+{% block body %}
+   
+
+   <div>
+    
+    <ul>
+        {% for new in News %}
+        <li>{{new}}</li>
+        {% endfor %}
+    </ul>
+
+   </div>
+
+
+
+{% endblock %}

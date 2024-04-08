@@ -14,3 +14,21 @@ def index(request):
         "News": get_News()
     })
 
+def news_card(request, id):
+
+    New = models.News.objects.get(id=id)
+
+    return render(request,"Main/news_card.html",{
+        "News":New
+    })
+
+
+def news_All(request):
+
+    return render(request, "Main/All_news.html",{
+        "News": get_News()
+    })
+
+
+
+

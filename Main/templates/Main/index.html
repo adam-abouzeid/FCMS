@@ -9,7 +9,7 @@
          <!--I was thinking of creating a horizontal scroll for the news if you can implement this-->
          {% for new in News %} 
          <div class="item">
-            <a href="">
+            <a href="{% url 'news_card' new.id %}">
                <img src="{{ new.Image }}" 
                     alt="Click here to view the new"
                     height="500"
