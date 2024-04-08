@@ -1,3 +1,6 @@
+html{
+  overflow-x: hidden !important;
+}
 main{ 
   height: 100%;
   width: 100%;
@@ -11,6 +14,7 @@ body{
   background-color: white;
   margin: 0;
   padding: 0;
+
 }
 
 
@@ -27,8 +31,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: width 200ms ease;
-  
+    z-index: 3;
     border: 1px solid #ccc;
   }
   
@@ -40,7 +43,7 @@ body{
     color: #333;
   }
   
-   a:hover {
+  .SideNavbar a:hover {
     background-color: #dd013f;
   }
 
