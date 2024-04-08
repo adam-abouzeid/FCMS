@@ -18,7 +18,7 @@ class User(AbstractUser):
     base_role = Role.FAN #since if a fan or club staff needs to register we can handle their registration manually to not be an admin
     profile_picture = models.ImageField(upload_to='profile_pics', null=True, blank=True)
     role = models.CharField(max_length=50, choices=Role.choices)
-    country = models.CharField(max_length=100)
+    country = models.CharField(max_length=100,default="N/A")
 
     
 
