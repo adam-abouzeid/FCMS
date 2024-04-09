@@ -1,45 +1,60 @@
 {% extends "Main/layout.html" %} {% block body %}
+{% load static %}
 
-<h2>Register</h2>
+{%block header %}
+<link rel="stylesheet" href="{% static 'Authentication/styleAuth.css' %}" />
+{% endblock %}
+
+<div class="card">
 
 <form action="{% url 'register' %}" method="post">
+  <i  class="fa-regular fa-futbol fa-bounce fa-2xl"></i>
   {% csrf_token %}
-  <div class="form-group">
-    <input
-      class="form-control"
-      autofocus
-      type="text"
-      name="username"
-      placeholder="Username"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="email"
-      name="email"
-      placeholder="Email Address"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="password"
-      name="password"
-      placeholder="Password"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="password"
-      name="confirmation"
-      placeholder="Confirm Password"
-    />
-  </div>
-  <input class="btn btn-primary" type="submit" value="Register" />
-</form>
+  <h2>Register</h2>
+  <div class="form">
 
-Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+    <div class="form-group">
+      <input
+        class="form-control"
+        autofocus
+        type="text"
+        name="username"
+        placeholder="Username"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        placeholder="Email Address"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        type="password"
+        name="confirmation"
+        placeholder="Confirm Password"
+      />
+    </div>
+    <input class="btn btn-primary" type="submit" value="Register" />
+
+  </div>
+  
+</form>
+<footer>
+  Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+</footer>
+
+</div>
 
 {% endblock %}

@@ -1,29 +1,53 @@
-{% extends "Main/layout.html" %} {% block body %}
+{% extends "Main/layout.html" %} 
+{%load static %}
 
-<h2>Login</h2>
+{%block header %}
+<link rel="stylesheet" href="{% static 'Authentication/styleAuth.css' %}" />
+{% endblock %}
 
-<form action="{% url 'login' %}" method="post">
-  {% csrf_token %}
-  <div class="form-group">
-    <input
-      autofocus
-      class="form-control"
-      type="text"
-      name="username"
-      placeholder="Username"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="password"
-      name="password"
-      placeholder="Password"
-    />
-  </div>
-  <input class="btn btn-primary" type="submit" value="Login" />
-</form>
+{% block body %}
 
-Don't have an account? <a href="{% url 'register' %}">Register here.</a>
+<div class="background"></div>
+<div class="card">
+
+  <form action="{% url 'login' %}" method="post">
+    <i  class="fa-regular fa-futbol fa-bounce fa-2xl"></i>
+    <h2>Welcome Back!</h2>
+    {% csrf_token %}
+    <div class="form">
+
+        <div class="form-group">
+          <input
+            autofocus
+            class="form-control"
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+        <input class="btn btn-primary" type="submit" value="Login" />
+
+    </div>
+  </form>
+  <footer>
+    Dont have an account? <a href="{% url 'register' %}">Register here.</a>
+  </footer>
+
+</div>
+
+
+
+
+
+
+
 
 {% endblock %}

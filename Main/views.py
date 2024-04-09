@@ -30,7 +30,7 @@ def news_card(request, id):
 def news_All(request):
 
     return render(request, "Main/All_news.html",{
-        "News": get_News()
+        "News": get_News(0)
     })
 
 
