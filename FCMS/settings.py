@@ -124,3 +124,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "Authentication.User"
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'Main/static',
+    BASE_DIR / 'Authentication/static',
+    # Other static file directories if any
+]
