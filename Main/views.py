@@ -16,6 +16,7 @@ def index(request):
 
     return render(request,"Main/index.html",{
         "News": get_News(),
+        "user":request.user
     })
 
 def news_card(request, id):

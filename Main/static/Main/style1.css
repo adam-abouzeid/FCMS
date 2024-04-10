@@ -63,6 +63,16 @@ body{
     transform: scale(1.1); 
   }
 
+  .Myprofile{
+   
+    position: fixed;
+    padding: 10px;
+    height: 200px;
+    font-size: 100%;
+  }
+
+ 
+
   
 
 

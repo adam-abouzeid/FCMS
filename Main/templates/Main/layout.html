@@ -19,12 +19,21 @@
   </head>
 
   <body>
-    <main>{% block body %} {% endblock %}</main>
+
+
+    <main>
+      
+      {% block body %} {% endblock %}
+    </main>
 
     <div class="TopNavBar" style="display: none">
       <!-- I just added this as an empty tag if anyone of you has some ideas to another navbar feel free to add-->
     </div>
     <div class="SideNavbar">
+      
+      {% if user.is_authenticated %}
+      <p>Signed in as <strong>{{ user.username }}</strong>.</p>
+      {% endif %}
       <!--Here we should add js code to make pressing each anchor tag responsive e.g if someone hoovers over Follow us they should see a mini pop up showing social media accounts-->
       <a href="{% url 'index' %}" class="active" id="LeipzigFocus">
         <img
@@ -46,7 +55,11 @@
       <hr class="navbarSeparator" />
       <a href="#">Join our Community</a>
       <hr class="navbarSeparator" />
+      {% if user.is_authenticated == False %}
       <a href="{% url 'login' %}">Login/Register</a>
+      {% else %}
+      <a href="{% url 'logout' %}">logout</a>
+      {% endif %}
       <hr class="navbarSeparator" />
       <a href="">
         <img
