@@ -3,8 +3,8 @@ import re
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from . import models
-
-def get_News(start = 0, end = 5):
+# This may not be the best place to put such functions, we can create a new file for these functions, utils usually include functions that are reusable, like date time format switcher
+def getNews(start = 0, end = 5):
     """
     return a list of atleast the latest five news
     """

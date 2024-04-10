@@ -17,6 +17,15 @@ class News(models.Model): # if not specified a primary key is explicitly generat
 
     def __str__(self) -> str:
         return self.title
+    
+
+class Game(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Against = models.CharField(max_length=100)
+    AgaistTeamLogo = models.TextField() # I added this for the sake of design
+    location = models.CharField(max_length=100,default="Red Bull Arena") # note that red bull arena is the home stadium for leipzig
+    date = models.DateTimeField(blank=False)
+    type = models.TextField() # I do not know what this means, but it is the database design so I added it 
 
 
 

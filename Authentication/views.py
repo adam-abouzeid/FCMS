@@ -74,3 +74,10 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "authentication/signup.html")
+
+
+def MyProfile_view(request):
+
+    if request.user.is_authenticated:
+        return render(request, "authentication/My_profile.html")
+   

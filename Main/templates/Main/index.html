@@ -1,70 +1,74 @@
-{% extends "Main/layout.html" %} 
-{% load static %}
+{% extends "Main/layout.html" %} {% load static %} {% block body %}
 
+<div class="Phrases">
+  <h1>Since 2009</h1>
+</div>
 
-{% block body %}
+<h1 class="NewsTitle">Latest News:</h1>
 
-   <div class="Phrases">
-      <h1>Since 2009</h1>
-   </div>
+<div class="HorScroll">
+  <!--I was thinking of creating a horizontal scroll for the news if you can implement this-->
+  {% for new in News %}
+  <div class="item">
+    <a href="{% url 'singleNews' new.id %}">
+      <img
+        src="{{ new.Image }}"
+        alt="Click here to view the new"
+        height="500"
+        width="700"
+      />
+    </a>
+    <div class="img__text">
+      <h4>{{new.title}}</h4>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+  var items = document.querySelectorAll(".item");
+  var HorScroll = document.querySelector(".HorScroll");
+  items.forEach(function (item) {
+    var copy = item.cloneNode(true);
+    HorScroll.appendChild(copy);
+  });
+  var totalWidth = 0;
+  items.forEach(function (item) {
+    totalWidth += item.offsetWidth;
+  });
+  HorScroll.style.width = totalWidth + "px";
 
-   <h1 class="NewsTitle">Latest News:</h1>
-   
-   <div class="HorScroll">
-         <!--I was thinking of creating a horizontal scroll for the news if you can implement this-->
-         {% for new in News %} 
-         <div class="item">
-            <a href="{% url 'news_card' new.id %}">
-               <img src="{{ new.Image }}" 
-                    alt="Click here to view the new"
-                    height="500"
-                    width="700">
-            </a>
-            <div class="img__text">
-               <h4>{{new.title}}</h4>  
-            </div>
-         </div>
-         {% endfor %}
-   </div>
-   <script>
-      var items = document.querySelectorAll(".item");
-      var HorScroll = document.querySelector(".HorScroll");
-      items.forEach(function(item) {
-         var copy = item.cloneNode(true);
-         HorScroll.appendChild(copy);
-      });
-      var totalWidth = 0;
-      items.forEach(function(item) {
-         totalWidth += item.offsetWidth;
-      });
-      HorScroll.style.width = totalWidth + "px";
+  var multiplier = items.length;
 
-      var multiplier = items.length;
-
-      var style = document.createElement('style');
-      style.innerHTML = '@keyframes scrollAnimation {\
+  var style = document.createElement("style");
+  style.innerHTML =
+    "@keyframes scrollAnimation {\
         0% {\
           transform: translateX(0);\
         }\
         100% {\
-          transform: translateX(-' + (100 * multiplier) + '%);\
+          transform: translateX(-" +
+    100 * multiplier +
+    "%);\
         }\
-      }';
-      document.head.appendChild(style);
+      }";
+  document.head.appendChild(style);
 
-      
+  function reShufflePhrases() {
+    PHRASES = [
+      "#We_Are_Leipzig",
+      "#Die_Roten_Bullen",
+      "#Follow_RB_LEIPZIG!",
+      "Since 2009",
+    ];
+    const container = document.querySelector(".Phrases h1");
+    var index = 0;
 
-      function reShufflePhrases(){
-         PHRASES = ["#We_Are_Leipzig", "#Die_Roten_Bullen","#Follow_RB_LEIPZIG!","Since 2009"];
-         const container = document.querySelector(".Phrases h1");
-         var index = 0;
+    return function () {
+      container.innerHTML = PHRASES[index];
+      index = (index + 1) % PHRASES.length;
+    };
+  }
 
-         return function(){
-            container.innerHTML = PHRASES[index];
-            index = (index+1)%PHRASES.length;
-         };
-      }
-
-      var reshuffleInterval = setInterval(reShufflePhrases(), 2000);
-   </script>
+  var reshuffleInterval = setInterval(reShufflePhrases(), 2000);
+</script>
 {% endblock %}
