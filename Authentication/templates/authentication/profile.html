@@ -1,0 +1,35 @@
+{% extends 'Main/layout.html' %} {% block body %}
+<!-- Add your profile content here -->
+<!-- Split this page into multiple tabs but for now will implement the needed in 1 section -->
+<h1>My profile update hereeeee</h1>
+<!-- upload.html -->
+<h6>Current Profile Pic</h6>
+<img src="{{ user.image }}" alt="Profile Pic" width="100" height="100" />
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="username">Username:</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    value="{{user.username}}"
+    required
+  /><br /><br />
+
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    value="{{user.email}}"
+    required
+  /><br /><br />
+
+  <label for="image">Image:</label>
+  <input type="file" id="image" name="image" accept="image/*" /><br /><br />
+
+  <button type="submit">Update Profile</button>
+</form>
+
+{% endblock %}
+

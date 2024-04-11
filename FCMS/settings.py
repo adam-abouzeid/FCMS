@@ -11,7 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api	
+cloudinary.config( 
+  	cloud_name = "slydev",
+  	api_key = "729692494835934",
+  	api_secret = "0SAinYny8gLGchdVZYKj39GYwmM"
+)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -133,3 +140,5 @@ STATICFILES_DIRS = [
     BASE_DIR / 'Authentication/static',
     # Other static file directories if any
 ]
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

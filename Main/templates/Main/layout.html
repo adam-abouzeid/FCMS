@@ -47,7 +47,14 @@
       <hr class="navbarSeparator" />
       <a href="#">Join our Community</a>
       <hr class="navbarSeparator" />
+      {% if user.is_authenticated %}
+
+      <a href="{% url 'myProfile' user.id %}">My Profile</a>
+      {% else %}
+
       <a href="{% url 'login' %}">Login/Register</a>
+
+      {% endif %}
       <hr class="navbarSeparator" />
       <a href="">
         <img

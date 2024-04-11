@@ -31,5 +31,3 @@ def news_All(request):
     })
 
 
-
-

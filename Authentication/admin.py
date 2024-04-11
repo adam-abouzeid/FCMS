@@ -4,14 +4,14 @@ from .models import User
 # Custom admin for User
 class UserAdmin(admin.ModelAdmin):
     # Display in list view
-    list_display = ('username', 'email', 'date_joined', 'is_active')
+    list_display = ('username', 'email', 'date_joined', 'is_active', 'image')
     list_filter = ('is_active', 'date_joined')  # Filters on the right
     search_fields = ('username', 'email')  # Search capability
     list_per_page = 25  # Pagination
 
     # Customizes form fields in detail view
     fieldsets = (
-        ('Personal info', {'fields': ('username', 'email', 'password')}),
+        ('Personal info', {'fields': ('username', 'email', 'password', 'image', 'role', 'country')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 
                                     'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
