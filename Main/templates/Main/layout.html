@@ -22,11 +22,13 @@
   <body>
 
 
+
     <main>
       
       {% block body %} {% endblock %}
     </main>
 
+    
     <div class="TopNavBar" style="display: none">
       <!-- I just added this as an empty tag if anyone of you has some ideas to another navbar feel free to add-->
     </div>
@@ -78,5 +80,42 @@
         Check Our Shop!
       </a>
     </div>
+
+    <div style="margin-bottom: 12%;">
+     
+    </div>
+    
+
+
+    
+    <footer class="footer">
+
+      <div class="waves">
+    
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+    
+      </div>
+    
+      <ul class="social_icon">
+        <li><a href="https://www.facebook.com/rbleipzig/" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a></li>
+        <li><a href="https://www.instagram.com/rbleipzig/" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a></li>
+        <li><a href="https://twitter.com/RBLeipzig_EN" target="_blank"><i class="fa-brands fa-twitter fa-2xl"></i></a></li>
+      </ul>
+    
+      <ul class="menu">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Team</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    
+      <p>@2024 All rights Reserved</p>
+      
+    </footer>
+
+
+    
   </body>
 </html>

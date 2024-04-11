@@ -1,7 +1,7 @@
 .card{
     overflow:hidden;
     position: relative;
-    z-index: 3;
+    
     width: 60%;
     margin-top: 20px;
     margin-left: 20%;
@@ -91,10 +91,10 @@
   }
 
 
-  .card > footer{
+  .card > .end{
     margin-top: 15px;
     color: #a1a1a1;
   }
-  .card > footer > a{
+  .card > .end > a{
     color: #216ce7;
   }

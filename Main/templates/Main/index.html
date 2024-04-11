@@ -1,4 +1,5 @@
-{% extends "Main/layout.html" %} {% load static %} {% block body %}
+{% extends "Main/layout.html" %} {% load static %} 
+{% block body %}
 
 <div class="Phrases">
   <h1>Since 2009</h1>
@@ -7,7 +8,7 @@
 <h1 class="NewsTitle">Latest News:</h1>
 
 <div class="HorScroll">
-  <!--I was thinking of creating a horizontal scroll for the news if you can implement this-->
+
   {% for new in News %}
   <div class="item">
     <a href="{% url 'singleNews' new.id %}">
@@ -23,8 +24,10 @@
     </div>
   </div>
   {% endfor %}
-</div>
+</div> 
+
 <script>
+  
   var items = document.querySelectorAll(".item");
   var HorScroll = document.querySelector(".HorScroll");
   items.forEach(function (item) {
@@ -52,6 +55,7 @@
         }\
       }";
   document.head.appendChild(style);
+  
 
   function reShufflePhrases() {
     PHRASES = [
@@ -70,5 +74,5 @@
   }
 
   var reshuffleInterval = setInterval(reShufflePhrases(), 2000);
-</script>
+</script>  
 {% endblock %}
