@@ -1,8 +1,7 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils import timezone
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+
+
 
 
 # Create your models here.
@@ -17,7 +16,7 @@ class User(AbstractUser):
         CLUB_STAFF = "CLUB_STAFF", 'Club_Staff'
 
     base_role = Role.FAN #since if a fan or club staff needs to register we can handle their registration manually to not be an admin
-    profile_picture = models.ImageField(upload_to='profile_pics', null=True, blank=True)
+    image = models.URLField(default="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png") 
     
     role = models.CharField(max_length=50, choices=Role.choices)
     country = models.CharField(max_length=100,default="N/A")

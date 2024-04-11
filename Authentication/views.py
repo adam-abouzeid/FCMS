@@ -4,7 +4,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
+<<<<<<< HEAD
 from .util import *
+=======
+import cloudinary.uploader
+
+>>>>>>> c1579a4cf30da0c75cf391cbd1604e6103ea8b42
 from .models import User
 
 
@@ -34,7 +39,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
-def register(request):
+def register_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
@@ -76,8 +81,25 @@ def register(request):
         return render(request, "authentication/signup.html")
 
 
-def MyProfile_view(request):
+def profile_view(request, id):
+    user = User.objects.get(id=id)  # Assuming a user exists with this username
+    if request.method == "POST":
+        # Update user information
+        user.username = request.POST.get("username", "")
+        user.email = request.POST.get("email", "")
+        
+        # Handle image upload
+        image = request.FILES.get("image")
+        if image:
+            # Upload to Cloudinary
+            upload_result = cloudinary.uploader.upload(image)
+            user.image = upload_result['url']  # Assuming you have a profile model related to your User model
 
-    if request.user.is_authenticated:
-        return render(request, "authentication/My_profile.html")
-   
+        user.save()
+
+        return render(request, "authentication/profile.html", {
+            "message": "Profile updated successfully."
+        })
+    
+    # For GET requests
+    return render(request, "authentication/profile.html")
