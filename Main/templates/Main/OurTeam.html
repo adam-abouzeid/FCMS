@@ -1,0 +1,97 @@
+{% extends "Main/layout.html" %} {% load static %} 
+
+
+
+
+{% block body %}
+   <div style="background-color: red; width: 100%; height: 100vh;">
+
+    <h1>Team:</h1>
+    <ul>
+        <li><a  href="#Goalkeepers">Goalkeepers</a></li>
+        <li><a href="#Defense">Defense</a></li>
+        <li><a href="#MiddleFeild">MiddleFeild</a></li>
+        <li><a href="#Forward">Forward</a></li>
+        <li><a href="#Trainers">Trainers</a></li>
+    </ul>
+    <section id="Goalkeepers">
+        <h2>Goalkeepers:</h2>
+        <div>
+            {% for gk in GK %}
+
+            <div>
+                {{gk.Name}}
+            </div>
+                
+
+            {% endfor %}
+            
+        </div>
+        
+    </section>
+    <section id="Defense">
+        <h2>Defense:</h2>
+        <div>
+            {% for df in DF %}
+                {{df.Name}}
+
+            {% endfor %}
+            
+        </div>
+
+    </section>
+    <section id="MiddleFeild">
+        <h2>MiddleFeild:</h2>
+        <div>
+            {% for md in MD%}
+                {{md.Name}}
+
+            {% endfor %}
+            
+        </div>
+
+    </section>
+    <section id="Forward">
+        <h2>Forward:</h2>
+
+        <div>
+            {% for fr in FR %}
+                <div>
+                    {{fr.Name}}
+
+                </div>
+
+            {% endfor %}
+            
+        </div>
+
+    </section>
+    <section id="Trainers">
+        <h2>Trainers:</h2>
+        <div>
+            {% for tr in TR %}
+                {{tr.Name}}
+
+            {% endfor %}
+            
+        </div>
+
+    </section>
+
+    
+   </div>
+
+
+   <style>
+    section{
+        margin: 30px 30px;
+        padding-left: 10px;
+    }
+    ul li{
+        display: inline-block;
+        margin-right: 10px;
+        
+    }
+   
+   </style>
+{% endblock %}

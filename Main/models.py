@@ -25,7 +25,27 @@ class Game(models.Model):
     AgaistTeamLogo = models.TextField() # I added this for the sake of design
     location = models.CharField(max_length=100,default="Red Bull Arena") # note that red bull arena is the home stadium for leipzig
     date = models.DateTimeField(blank=False)
-    type = models.TextField() # I do not know what this means, but it is the database design so I added it 
+
+
+class Player(models.Model):
+
+    class type(models.TextChoices):
+        Goalkeeper = "GoalKeeper", 'GoalKeeper'
+        Defense = "Defense", 'Defense'
+        MiddleFeild = "MiddleFeild", 'MiddleFeild'
+        Forward = "Forward", 'Forward'
+        Trainer = "Trainer", 'Trainer'
+
+
+    id = models.IntegerField(primary_key=True)
+    Name = models.CharField(max_length=100)
+    image = models.URLField(default="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png")
+    TshirtNumber = models.IntegerField(blank=True, unique=True)
+    role = models.CharField(max_length=20, choices=type.choices)
+
+    def __str__(self) -> str:
+        return self.Name +"/"+self.role
+
 
 
 

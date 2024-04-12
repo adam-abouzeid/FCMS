@@ -31,4 +31,19 @@ def news_All(request):
         "News": news
     })
 
+def OurTeam(request):
+
+    GK = Player.objects.filter(role="GoalKeeper")
+    DF = Player.objects.filter(role="Defense")
+    MD = Player.objects.filter(role="MiddleField")
+    FR = Player.objects.filter(role="Forward")
+    TR = Player.objects.filter(role="Trainer")
+
+    return render(request, "Main/OurTeam.html", {
+        "GK": GK,
+        "DF": DF,
+        "MD": MD,
+        "FR": FR,
+        "TR": TR
+    })
 
