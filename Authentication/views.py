@@ -4,12 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
-<<<<<<< HEAD
-from .util import *
-=======
 import cloudinary.uploader
-
->>>>>>> c1579a4cf30da0c75cf391cbd1604e6103ea8b42
+from . import util
 from .models import User
 
 
@@ -47,7 +43,7 @@ def register_view(request):
 
 
 
-        if(not check_if_country_valid(country)):
+        if(not util.check_if_country_valid(country)):
             return render(request, "authentication/signup.html", {
                 "message": "Please enter a Country"
             })
@@ -56,7 +52,7 @@ def register_view(request):
         # Ensure password matches confirmation
         password = request.POST["password"]
 
-        if(not is_strong_password(password)):
+        if(not util.is_strong_password(password)):
             return render(request, "authentication/signup.html", {
                 "message": "Password Must be atleast 8 characters long containing atleast one digit, one upercase letter, and one special character"
             })
