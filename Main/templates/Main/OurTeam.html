@@ -19,8 +19,12 @@
         <div>
             {% for gk in GK %}
 
-            <div>
-                {{gk.Name}}
+            <div class="player-card">
+
+                <img src="{{gk.image}}" alt="player Image">
+                <div class="text"> {{gk.Name}}</div>
+                <div class="shirtnum">{{gk.TshirtNumber}}</div>
+
             </div>
                 
 
@@ -86,11 +90,39 @@
     section{
         margin: 30px 30px;
         padding-left: 10px;
+        position: relative;
     }
     ul li{
         display: inline-block;
         margin-right: 10px;
         
+    }
+    .player-card{
+        height: 320px;
+        width: 250px;
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        position: relative;
+    }
+    .player-card > img{
+        height: 100%;
+        width: 100%;
+    }
+    .player-card > .text{
+        position: absolute;
+        font-size: 20px;
+        bottom: 25%;
+        left: 20%;
+        text-align: center;
+        padding: 5px 10px;
+    }
+    .player-card > .shirtnum{
+        top :0;
+        position: absolute;
+        font-size: 30px;
+        padding: 5px 10px;
     }
    
    </style>
