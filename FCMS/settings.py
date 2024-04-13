@@ -14,6 +14,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api	
+
 cloudinary.config( 
   	cloud_name = "slydev",
   	api_key = "729692494835934",
