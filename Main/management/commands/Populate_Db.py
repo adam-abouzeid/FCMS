@@ -24,13 +24,14 @@ class Command (BaseCommand):
         for line in file:
             
             line = line.strip() 
-            line = line[:-1]
-            if line == "":
+            if not line:
                 continue
-            line = line.split(",")
-            
-            player = Player.objects.create(Name=line[0],image=line[1],TshirtNumber=line[2],role=line[3])
-            self.stdout.write(self.style.SUCCESS("Player '{}' created.".format(player.Name))) 
+            else:
+
+                line = line.split(",")
+                
+                player = Player.objects.create(Name=line[0],image=line[1],TshirtNumber=line[2],role=line[3])
+                self.stdout.write(self.style.SUCCESS("Player '{}' created.".format(player.Name))) 
                 
 
     

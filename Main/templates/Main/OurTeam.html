@@ -4,9 +4,9 @@
 
 
 {% block body %}
-   <div style="background-color: red; width: 100%; height: 100vh;">
+   <div style=" width: 100%; height: 100%;">
 
-    <h1>Team:</h1>
+    <h1 style="font-family: fantasy; font-style: italic; font-size: 70px; color: #dd013f; margin-bottom: 30px;">Team:</h1>
     <ul>
         <li><a  href="#Goalkeepers">Goalkeepers</a></li>
         <li><a href="#Defense">Defense</a></li>
@@ -14,8 +14,9 @@
         <li><a href="#Forward">Forward</a></li>
         <li><a href="#Trainers">Trainers</a></li>
     </ul>
+    
     <section id="Goalkeepers">
-        <h2>Goalkeepers:</h2>
+        <h2 class="roleH2">Goalkeepers:</h2>
         <div>
             {% for gk in GK %}
 
@@ -34,10 +35,17 @@
         
     </section>
     <section id="Defense">
-        <h2>Defense:</h2>
+        <h2 class="roleH2">Defense:</h2>
         <div>
             {% for df in DF %}
-                {{df.Name}}
+               
+            <div class="player-card">
+
+                <img src="{{df.image}}" alt="player Image">
+                <div class="text"> {{df.Name}}</div>
+                <div class="shirtnum">{{df.TshirtNumber}}</div>
+
+            </div>
 
             {% endfor %}
             
@@ -45,10 +53,17 @@
 
     </section>
     <section id="MiddleFeild">
-        <h2>MiddleFeild:</h2>
+        <h2 class="roleH2">MiddleFeild:</h2>
         <div>
             {% for md in MD%}
-                {{md.Name}}
+               
+            <div class="player-card">
+
+                <img src="{{md.image}}" alt="player Image">
+                <div class="text"> {{md.Name}}</div>
+                <div class="shirtnum">{{md.TshirtNumber}}</div>
+
+            </div>
 
             {% endfor %}
             
@@ -56,12 +71,18 @@
 
     </section>
     <section id="Forward">
-        <h2>Forward:</h2>
+        <h2 class="roleH2">Forward:</h2>
 
         <div>
             {% for fr in FR %}
-                <div>
-                    {{fr.Name}}
+                
+                    <div class="player-card">
+
+                        <img src="{{fr.image}}" alt="player Image">
+                        <div class="text"> {{fr.Name}}</div>
+                        <div class="shirtnum">{{fr.TshirtNumber}}</div>
+        
+                    
 
                 </div>
 
@@ -71,10 +92,16 @@
 
     </section>
     <section id="Trainers">
-        <h2>Trainers:</h2>
+        <h2 class="roleH2">Trainers:</h2>
         <div>
             {% for tr in TR %}
-                {{tr.Name}}
+            <div class="player-card">
+
+                <img src="{{tr.image}}" alt="player Image">
+                <div class="text"> {{tr.Name}}</div>
+                <div class="shirtnum">{{tr.TshirtNumber}}</div>
+
+            </div>
 
             {% endfor %}
             
@@ -87,43 +114,81 @@
 
 
    <style>
+
     section{
-        margin: 30px 30px;
+        margin: 50px 50px;
         padding-left: 10px;
         position: relative;
     }
     ul li{
         display: inline-block;
         margin-right: 10px;
+        margin-bottom: 10px;
+        font-size: 20px;
         
+    }
+    .roleH2{
+        font-family: fantasy;
+        font-size: 40px;
+        color: #dd013f;
     }
     .player-card{
         height: 320px;
         width: 250px;
         display: inline-block;
         margin-right: 20px;
-        margin-bottom: 20px;
-        border: 1px solid black;
+        margin-bottom: 30px;
+        margin-top: 20px;
+        border: 6px outset black;
+        border-radius: 20%;
+        padding: 5px;
         position: relative;
+    }
+    .player-card:hover{
+        transform: scale(1.1);
+        border-color: #dd013f;
+    }
+    .player-card:hover .shirtnum {
+        color: #dd013f;
+    }
+    .player-card:hover .text {
+        color: #dd013f;
     }
     .player-card > img{
         height: 100%;
         width: 100%;
     }
     .player-card > .text{
-        position: absolute;
+        margin-top: 5px;
+        position: relative;
         font-size: 20px;
-        bottom: 25%;
-        left: 20%;
+        text-align: center;
         text-align: center;
         padding: 5px 10px;
+        font-family: fantasy;
+        font-size: 20px;
+
     }
     .player-card > .shirtnum{
         top :0;
         position: absolute;
         font-size: 30px;
-        padding: 5px 10px;
+        padding: 10px 10px;
+        font-family: fantasy;
+        font-weight: bold;
+        font-size:40px;
+        
     }
    
    </style>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function(){
+
+        const card = document.querySelector(".player-card");
+
+
+    });
+   </script>
+ 
 {% endblock %}

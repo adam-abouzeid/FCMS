@@ -35,7 +35,7 @@ def OurTeam(request):
 
     GK = Player.objects.filter(role="GoalKeeper")
     DF = Player.objects.filter(role="Defense")
-    MD = Player.objects.filter(role="MiddleField")
+    MD = Player.objects.filter(role="MiddleFeild")
     FR = Player.objects.filter(role="Forward")
     TR = Player.objects.filter(role="Trainer")
 
