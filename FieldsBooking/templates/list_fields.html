@@ -1,0 +1,17 @@
+{% load static %}
+<h1>Available Fields</h1>
+<head><link rel="stylesheet" href="{% static 'styles.css' %}"></head>
+<body>
+    <div class="card-container">
+        {% for field in fields %}
+            <div class="card">
+                <img src="{{ field.image.url }}" alt="{{ field.name }}">
+                <div class="card-details">
+                    <h2>{{ field.name }}</h2>
+                    <p>Description: {{ field.description }}</p>
+                    <p>Price per hour: {{ field.price_per_hour }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
