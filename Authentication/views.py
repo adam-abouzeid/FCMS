@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
 import cloudinary.uploader
 from . import util
 from .models import User
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -77,10 +78,17 @@ def register_view(request):
         return render(request, "authentication/signup.html")
 
 
+@login_required(login_url="/auth/login/")
 def profile_view(request, id):
+
+    if int(request.user.id) != int(id):
+        print(request.user.id, id)
+        return HttpResponseForbidden("You are not authorized to perform this action.")
+
     user = User.objects.get(id=id)  # Assuming a user exists with this username
     if request.method == "POST":
         # Update user information
+        
         user.username = request.POST.get("username", "")
         user.email = request.POST.get("email", "")
         
@@ -97,5 +105,10 @@ def profile_view(request, id):
             "message": "Profile updated successfully."
         })
     
+    else:
+            return render(request, "authentication/profile.html", {
+            "message": "You have no permission to update this profile!"
+        })
+        
     # For GET requests
     return render(request, "authentication/profile.html")
