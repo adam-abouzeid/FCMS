@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'OnlineShop',    #new
     'Authentication',  #new
-    'Main' #new
+    'Main', #new
+    'Community' #new
 ]
 
 MIDDLEWARE = [

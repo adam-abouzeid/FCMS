@@ -22,4 +22,5 @@ urlpatterns = [
     path('OnlineShop', include("OnlineShop.urls")), #new
     path('auth/', include("Authentication.urls")), #new
     path('', include("Main.urls")), #new
+    path('Community/', include("Community.urls")), #new
 ]
