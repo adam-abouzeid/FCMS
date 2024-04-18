@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'OnlineShop',    #new
     'Authentication',  #new
-    'Main', #new
-    'FieldsBooking' #new
+    'Main' #new
 ]
 
 MIDDLEWARE = [

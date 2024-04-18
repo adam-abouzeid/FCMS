@@ -24,7 +24,6 @@ urlpatterns = [
     path('OnlineShop', include("OnlineShop.urls")), #new
     path('auth/', include("Authentication.urls")), #new
     path('', include("Main.urls")), #new
-    path('FieldsBooking/', include("FieldsBooking.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

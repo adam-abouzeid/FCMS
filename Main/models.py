@@ -27,6 +27,14 @@ class Game(models.Model):
     date = models.DateTimeField(blank=False)
     type = models.TextField() # I do not know what this means, but it is the database design so I added it 
 
+class Field(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    price_per_hour = models.DecimalField(max_digits=5, decimal_places=2)
+    image = models.ImageField(upload_to='fields/',default='fields/default.jpg')
+
+    def __str__(self):
+        return self.name
 
 
 

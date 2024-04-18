@@ -2,7 +2,6 @@
 from django.shortcuts import render
 from .models import *
 from .util import *
-
 # Create your views here.
 
 
@@ -30,6 +29,10 @@ def news_All(request):
     return render(request, "Main/All_news.html",{
         "News": news
     })
+
+def list_fields(request):
+    fields = Field.objects.all()
+    return render(request, 'Main/list_fields.html', {'fields': fields})
 
 
 
