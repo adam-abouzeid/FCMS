@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -53,6 +53,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'FCMS.urls'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+]
+
 
 TEMPLATES = [
     {
@@ -132,4 +139,15 @@ STATICFILES_DIRS = [
     BASE_DIR / 'Main/static',
     BASE_DIR / 'Authentication/static',
     # Other static file directories if any
+]
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where collectstatic stores files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Your current static directory
 ]
