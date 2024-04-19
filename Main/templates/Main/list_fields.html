@@ -1,6 +1,10 @@
-{% load static %}
-<h1>Available Fields</h1>
-<head><link rel="stylesheet" href="{% static 'stylesfields.css' %}"></head>
+{% extends "Main/layout.html" %} {% load static %} {% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'Main/stylefields.css' %}">
+</head>
+<div class="stadium-title">
+    <h2>Available Stadiums</h2>
+</div>
 <body>
     <div class="card-container">
         {% for field in fields %}
@@ -10,8 +14,10 @@
                     <h2>{{ field.name }}</h2>
                     <p>Description: {{ field.description }}</p>
                     <p>Price per hour: {{ field.price_per_hour }}</p>
+                    <a href="{% url 'book_field' field_id=field.id %}" class="book-button">Book Now</a>
                 </div>
             </div>
         {% endfor %}
     </div>
 </body>
+{% endblock %}

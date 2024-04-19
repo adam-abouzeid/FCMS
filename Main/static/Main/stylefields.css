@@ -9,6 +9,13 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -37,4 +44,22 @@
 
 .card-details a:hover {
     background-color: #0056b3;
+}
+
+.stadium-title{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #d00000;
+}
+.booking-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Flexbox styles */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+    height: 100vh;           /* Full viewport height */
 }

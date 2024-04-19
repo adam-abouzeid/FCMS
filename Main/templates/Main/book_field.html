@@ -1,0 +1,21 @@
+{% extends "Main/layout.html" %} {% load static %} {% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'Main/stylebooking.css' %}">
+</head>
+<div class="book-header">
+    <h2>Book {{field.name}}</h2>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <label for="date">Date:</label>
+    <input type="date" name="date" required>
+    <br>
+    <label for="start_time">Start Time:</label>
+    <input type="time" name="start_time" required>
+    <br>
+    <label for="end_time">End Time:</label>
+    <input type="time" name="end_time" required>
+    <br>
+    <input type="submit" value="Book">
+</form>
+{% endblock%}
