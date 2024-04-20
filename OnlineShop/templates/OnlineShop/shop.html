@@ -1,0 +1,197 @@
+{% extends "Main/layout.html" %} 
+{% load static %} 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'static/styles.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+  <title>Barbershop Online Shop</title>
+  <style>
+    .title-text{
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <section id="banner">
+      <img src="{% static 'assets/image/logo.png' %}" class="logo" alt="OUR LOGO">
+      <div class="banner-text">
+          <h1>Leipzig's Online Shop</h1>
+          <p>Explore Our Grooming Collections</p>
+          <div class="banner-btn">
+              <a href="#product-container" id="scroll-to-contact"><span></span>Our Collections</a>
+          </div>
+      </div>
+  </section>
+
+  <div id="menubtn">
+    <img src="{% static 'assets/image/menu.png' %}" id="menu">
+  </div>
+
+  </header>
+
+  <main>
+    <div class="title-text">
+       <p>Welcome To Our Shop</p>
+       <h1>What to purchase?</h1>
+    </div>  
+
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search products...">
+      <button onclick="searchProducts()">Search</button>
+    </div>
+
+    <div class="cart">
+      <h2>Shopping Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: <span id="total-price">$0.00</span></p>
+      <p>Budget: <span id="budget">$0.00</span></p> <!-- This is where the budget will be displayed -->
+      <p>Remaining Budget: <span id="remaining-budget">$0.00</span></p> <!-- This will show remaining budget -->
+      <p>Set Budget: <input type="number" id="budget-input" step="0.01" placeholder="Enter your budget"></p>
+      <button onclick="setBudget()">Set Budget</button>
+      <button onclick="checkout()">Checkout</button>
+      <button onclick="removeFromCart({{ product.id }})">Remove from Cart</button>
+      <button onclick="requestRefund()">Request Refund</button>
+    </div>  
+
+    <div id="product-container">
+    {% for product in products %}
+      <section class="product">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <div class="product-details">
+          <h2>{{ product.name }}</h2>
+          <p class="price">${{ product.price }}</p>
+          <button onclick="addToCart('{{ product.name }}', '{{ product.price }})">Add to Cart</button>
+        </div>
+      </section>
+    {% endfor %}
+    </div>
+  </main>
+  
+  <div class="cart">
+    <button onclick="checkout()">Checkout</button>
+  </div>
+
+<section id="footer">
+  <img src="{% static 'assets/image/footer-img.png' %}" class="footer-img">
+  <div class="title-text">
+      <p>Contact</p>
+      <h1>Visit Shop Today</h1>
+  </div>  
+  <div class="footer-row">
+      <div class="footer-left">
+          <h1>Opening Hours</h1>
+          <p><i class="far fa-clock"></i>Monday to Friday - 9am to 9pm</p>
+           <P><i class="far fa-clock"></i>Saturday and Sunday - 8am to 11pm</p>
+      </div>
+      <div class="footer-right">
+          <h1>Get In Touch</h1>
+          <p><i class="fas fa-map"></i>Makdessi street, Beirut-Hamra</p>
+          <p><i class="fas fa-paper-plane"></i>ahmadabs183@gmail.com</p>
+          <p><i class="fas fa-phone"></i>+961 81 048 256</p>
+      </div>
+  </div>
+
+  <div class="social-links">
+    <a href="https://www.facebook.com/your-facebook-page" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/your-instagram-account" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com/your-twitter-account" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.youtube.com/your-youtube-channel" target="_blank"><i class="fab fa-youtube"></i></a>
+    <p>&copy; Mavericks Barber</p>
+  </div>
+</section>
+<script>
+    let cartItems = [];
+    let total = 0;
+    let budget = 0;
+    
+    function setBudget() {
+        const budgetInput = document.getElementById("budget-input").value;
+        if (!budgetInput) {
+            alert("Please enter a valid budget amount.");
+            return;
+        }
+        budget = parseFloat(budgetInput);
+        document.getElementById("budget").textContent = `$${budget.toFixed(2)}`; // Display budget
+        document.getElementById("remaining-budget").textContent = `$${budget.toFixed(2)}`; 
+        document.getElementById("budget-input").value = "";
+        alert("Budget set successfully!"); 
+    }
+    
+    function addToCart(itemName, itemPrice) {
+        if (total + itemPrice > budget) {
+            alert("Exceeds budget limit!");
+            return;
+        }
+    
+        cartItems.push({ name: itemName, price: itemPrice });
+        total += itemPrice;
+        updateCart();
+    }
+    
+    function updateCart() {
+        const cartList = document.getElementById("cart-items");
+        const totalPrice = document.getElementById("total-price");
+    
+        cartList.innerHTML = "";
+        cartItems.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.name}: $${item.price}`;
+            cartList.appendChild(li);
+        });
+    
+        totalPrice.textContent = `$${total.toFixed(2)}`;
+    
+        // Update remaining budget
+        const remainingBudget = budget - total;
+        document.getElementById("remaining-budget").textContent = `$${remainingBudget.toFixed(2)}`;
+    }
+    
+    function checkout() {
+        alert(`Thank you for your purchase! Total amount: $${total.toFixed(2)}`);
+        cartItems = [];
+        budget -= total; 
+        document.getElementById("budget").textContent = `$${budget.toFixed(2)}`; 
+        total=0;
+        updateCart();
+        
+    }
+    
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Smooth scrolling when clicking the "Find Out" link
+      document.getElementById("scroll-to-contact").addEventListener("click", function(event) {
+          event.preventDefault();
+          document.querySelector("#product-container").scrollIntoView({
+              behavior: "smooth"
+          });
+      });
+    });
+
+
+    function searchProducts() {
+      const searchQuery = document.getElementById("search-input").value.toLowerCase();
+      const productSections = document.querySelectorAll(".product");
+ 
+      productSections.forEach(section => {
+        const productName = section.querySelector("h2").textContent.toLowerCase();
+        if (productName.includes(searchQuery)) {
+          // If the product name includes the search query, display the section
+          section.style.display = "block";
+        } else {
+          // Otherwise, hide the section
+          section.style.display = "none";
+        }
+      });
+    }
+</script>
+</body>
+</html>
