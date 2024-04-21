@@ -27,7 +27,7 @@ This view will accept a request from the index page as the user hovers over to t
 
 def posts(request):
     
-     # Get start and end points                                     # This code is similar to the code I viewed in CS50
+     #Get start and end points                                     #This code is similar to the code I viewed in CS50
     start = int(request.GET.get("start") or 0)
     end = int(request.GET.get("end") or (start + 9))
 
@@ -44,10 +44,10 @@ def posts(request):
         'caption',
         "owner__image"
     )[start:end+1]
-)
+    )
 
 
-    # Artificially delay speed of response
+    #Artificially delay speed of response
     #time.sleep(1)
 
     # Return list of posts
@@ -81,7 +81,7 @@ def toggle_like(request, post_id):
         return JsonResponse({'success': False, 'error': 'Unauthorized or invalid request method'})
     
 
-
+@login_required(login_url="/auth/login/")
 def add_post(request):
 
     if request.method=="GET":
@@ -95,4 +95,4 @@ def add_post(request):
     post = Post(owner=username,caption=caption, image=image)
     post.save()
 
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("Community_index"))

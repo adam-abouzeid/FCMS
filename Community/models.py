@@ -13,6 +13,9 @@ class Post(models.Model):
 
     def owner_name(self):
         return self.owner.username
+    
+    def owner_pic(self):
+        return self.owner.image
 
     def number_of_likes(self):
         return self.likes.count()  # Count the number of related like instances
