@@ -1,83 +1,366 @@
-{% extends "Main/layout.html" %} {% load static %} {% block body %}
-<div
-  class="home-landing"
-  style="background-color: red; width: 100%; height: 100vh; padding: 20px"
-> <!-- what is this ???-->
-  <div class="left-side"></div>
-  <div class="right-side"></div>
-</div>
-<div class="Phrases">
-  <h1>Since 2009</h1>
-</div>
-
-<h1 class="NewsTitle">Latest News:</h1>
-
-<div class="HorScroll">
-
-  {% for new in News %}
-  <div class="item">
-    <a href="{% url 'singleNews' new.id %}">
-      <img
-        src="{{ new.Image }}"
-        alt="Click here to view the new"
-        height="500"
-        width="700"
-      />
-    </a>
-    <div class="img__text">
-      <h4>{{new.title}}</h4>
-    </div>
-  </div>
-  {% endfor %}
-</div> 
-
-<script>
-  
-  var items = document.querySelectorAll(".item");
-  var HorScroll = document.querySelector(".HorScroll");
-  items.forEach(function (item) {
-    var copy = item.cloneNode(true);
-    HorScroll.appendChild(copy);
-  });
-  var totalWidth = 0;
-  items.forEach(function (item) {
-    totalWidth += item.offsetWidth;
-  });
-  HorScroll.style.width = totalWidth + "px";
-
-  var multiplier = items.length;
-
-  var style = document.createElement("style");
-  style.innerHTML =
-    "@keyframes scrollAnimation {\
-        0% {\
-          transform: translateX(0);\
-        }\
-        100% {\
-          transform: translateX(-" +
-    100 * multiplier +
-    "%);\
-        }\
-      }";
-  document.head.appendChild(style);
-  
-
-  function reShufflePhrases() {
-    PHRASES = [
-      "#We_Are_Leipzig",
-      "#Die_Roten_Bullen",
-      "#Follow_RB_LEIPZIG!",
-      "Since 2009",
-    ];
-    const container = document.querySelector(".Phrases h1");
-    var index = 0;
-
-    return function () {
-      container.innerHTML = PHRASES[index];
-      index = (index + 1) % PHRASES.length;
-    };
+{% extends "Main/layout.html" %} {% load static %} {%block header%}
+<style>
+  body,
+  html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
   }
 
-  var reshuffleInterval = setInterval(reShufflePhrases(), 2000);
-</script>  
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .carousel {
+    width: 60%;
+    position: relative;
+  }
+
+  .slides img {
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+  }
+
+  .text-block {
+    width: 40%;
+  }
+
+  .text-block p {
+    margin: 0;
+    font-size: 24px;
+    width: 50%;
+  }
+
+  .text-block button {
+    background-color: #af2525;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .Phrases {
+    padding-top: 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: -1px 0 #dd013f, 0 1px #dd013f, 1px 0 #dd013f, 0 -1px #dd013f;
+    color: transparent;
+  }
+
+  .header-games {
+    display: flex;
+    justify-content: space-between;
+  }
+  .header-games a {
+    color: black;
+  }
+  .upcoming-games {
+    margin-top: 140px;
+    padding: 10px;
+  }
+  .games {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #e0e0e0;
+  }
+  .card {
+    flex: 0 0 auto;
+    width: 300px;
+    height: auto;
+    margin-right: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .card h2 {
+    margin-top: 15px;
+    color: #333;
+    font-size: 24px;
+  }
+
+  .card p {
+    color: #555;
+    margin: 5px 0;
+  }
+
+  .buy-ticket-btn {
+    text-decoration: none;
+    text-align: center;
+    margin-top: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c44d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  .info {
+    margin-top: 10px;
+    display: flex;
+    font-size: smaller;
+    justify-content: space-between;
+  }
+  .info p {
+    color: #555;
+  }
+  .trophies {
+    margin-top: 200px;
+  }
+  .trophies .header {
+    text-align: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 250px;
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .card-front {
+    background: white;
+    color: black;
+    z-index: 2;
+  }
+
+  .card-back {
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 14px;
+  }
+</style>
+
+{%endblock%} {% block body %}
+
+<div class="content">
+  <div class="text-block">
+    <div class="Phrases">
+      <h1>Been Here Since 2009</h1>
+    </div>
+    <button onclick="location.href='/shop'">Explore</button>
+  </div>
+  <div class="carousel">
+    <div class="slides">
+      {% for new in News %}
+      <a href="{% url 'singleNews' new.id %}">
+        <img
+          style="width: 400px; height: 300px"
+          src="{{ new.Image }}"
+          alt="Slide"
+        />
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="upcoming-games">
+  <div class="header-games">
+    <h2>Upcoming Games</h2>
+    <a href="{% url 'tickets' %}">View all</a>
+  </div>
+  <div class="games">
+    {% for game in games %}
+    <div class="card">
+      <img
+        class="card-img"
+        src="{{ game.thumbnail }}"
+        alt="Thumbnail for {{ game.name }}"
+      />
+
+      <h2>{{ game.name }}</h2>
+
+      <p style="font-size: larger; font-weight: 700">
+        ${{ game.price|floatformat:2 }}
+      </p>
+      <div class="info">
+        <p>{{ game.date|date:"D, d M Y H:i" }}</p>
+        <p>{{ game.location }}</p>
+      </div>
+      <a class="buy-ticket-btn" href="{% url 'ticket_detail' game.id %}"
+        >Buy Tickets</a
+      >
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="trophies">
+  <div class="header">Our Trophies</div>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img
+            src="https://tmssl.akamaized.net/images/erfolge/medium/27.png?lm=1520606999"
+            alt="Trophy Name"
+          />
+          <h3>German Cup</h3>
+        </div>
+        <div class="card-back">
+          <p>
+            This is the Trophy 1 description. It is awarded for excellence in
+            innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img
+            src="https://tmssl.akamaized.net/images/erfolge/medium/312.png?lm=1520606999"
+            alt="Trophy Name"
+          />
+          <h3>German Super Cup</h3>
+        </div>
+        <div class="card-back">
+          <p>
+            This is the Trophy 2 description. It is awarded for outstanding
+            teamwork.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img
+            src="https://tmssl.akamaized.net/images/erfolge/medium/699.png?lm=1647362865"
+            alt="Trophy Name"
+          />
+          <h3>German Regionals</h3>
+        </div>
+        <div class="card-back">
+          <p>
+            This is the Trophy 3 description. It is awarded for leadership and
+            management excellence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  let slideIndex = 0;
+  let phrases = [
+    "Been Here Since 2009",
+    "Welcome to Our Store",
+    "Explore Our Collection",
+  ]; // Array of phrases
+  carousel();
+
+  function plusSlides(n) {
+    slideIndex += n;
+    showSlides(slideIndex);
+    resetTimer();
+  }
+
+  function showSlides(n) {
+    let slides = document
+      .getElementsByClassName("slides")[0]
+      .getElementsByTagName("img");
+    let phrasesDiv = document.querySelector(".Phrases h1"); // Selecting the phrases h1 for update
+    if (n >= slides.length) {
+      slideIndex = 0;
+    }
+    if (n < 0) {
+      slideIndex = slides.length - 1;
+    }
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex].style.display = "block";
+    phrasesDiv.textContent = phrases[slideIndex % phrases.length]; // Updating the phrase
+  }
+
+  function carousel() {
+    showSlides(slideIndex);
+    slideIndex++;
+    setTimeout(carousel, 3000); // Change image and phrase every 3 seconds
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setTimeout(carousel, 3000);
+  }
+</script>
+
 {% endblock %}

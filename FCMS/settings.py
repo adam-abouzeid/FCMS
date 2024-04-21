@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'TicketShop',
     'OnlineShop',    #new
     'Authentication',  #new
     'Main', #new
@@ -62,6 +63,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'FCMS.urls'
+
+#dont touch critical
+STRIPE_PUBLIC_KEY = 'pk_test_51P7z0NGKDVYAHPQZ1I5GC9j5ZIVAC5ucVkNNOa5R8AdYqibbUFrmab2bREfWerRGoK7fFkDqzzE86JmTJmJPcDss00jxZRPflE'
+STRIPE_SECRET_KEY = 'sk_test_51P7z0NGKDVYAHPQZ15gbqAtKg9ywpa10KwUxVdbKqueUGohdmOvQBzyRt1mOnX3EHeiIyrDtOXneSd3BDitlWD1u00BupJ22EL'
 
 TEMPLATES = [
     {
