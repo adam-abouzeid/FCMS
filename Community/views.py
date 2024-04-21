@@ -30,7 +30,7 @@ def posts(request):
      #Get start and end points                                     #This code is similar to the code I viewed in CS50
     start = int(request.GET.get("start") or 0)
     end = int(request.GET.get("end") or (start + 9))
-
+   
     data = list(
     Post.objects
     .select_related('owner')

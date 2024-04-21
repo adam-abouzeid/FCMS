@@ -10,7 +10,7 @@ class Post(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     date_uploaded = models.DateTimeField(default=timezone.now)
     caption = models.CharField(max_length=100, blank=True)
-
+    
     def owner_name(self):
         return self.owner.username
     

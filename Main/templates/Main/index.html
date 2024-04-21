@@ -80,13 +80,13 @@
     scrollbar-width: thin;
     scrollbar-color: #888 #e0e0e0;
   }
-  .card {
+  .card-game {
     flex: 0 0 auto;
     width: 300px;
     height: auto;
     margin-right: 15px;
     background-color: #fff;
-    border: 1px solid #ccc;
+
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 10px;
@@ -195,7 +195,6 @@
   img {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #ccc;
   }
 
   h3 {
@@ -238,7 +237,7 @@
   </div>
   <div class="games">
     {% for game in games %}
-    <div class="card">
+    <div class="card-game">
       <img
         class="card-img"
         src="{{ game.thumbnail }}"

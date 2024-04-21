@@ -1,7 +1,6 @@
-{% extends "Main/layout.html" %} {%load static %} {%block header %}
-<link rel="stylesheet" href="{% static 'Authentication/styleAuth.css' %}" />
-{% endblock %} {% block body %} {%block header%}
+{% extends "Main/layout.html" %} {%load static %} {%block header%}
 
+<link rel="stylesheet" href="{% static 'Authentication/styleAuth.css' %}" />
 <style>
   .red-btn {
     background-color: #dc3545;
@@ -12,7 +11,7 @@
     font-size: 16px;
   }
 </style>
-{% endblock %}
+{% endblock %}{% block body %}
 <div class="card">
   <form action="{% url 'login' %}" method="post">
     <i class="fa-regular fa-futbol fa-bounce fa-2xl"></i>
