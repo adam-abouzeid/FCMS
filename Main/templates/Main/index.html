@@ -49,7 +49,6 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
-    position: fixed;
   }
 
   .Phrases {
@@ -135,6 +134,77 @@
   .info p {
     color: #555;
   }
+  .trophies {
+    margin-top: 200px;
+  }
+  .trophies .header {
+    text-align: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 250px;
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .card-front {
+    background: white;
+    color: black;
+    z-index: 2;
+  }
+
+  .card-back {
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 14px;
+  }
 </style>
 
 {%endblock%} {% block body %}
@@ -192,6 +262,62 @@
   </div>
 </div>
 
+<div class="trophies">
+  <div class="header">Our Trophies</div>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img
+            src="https://tmssl.akamaized.net/images/erfolge/medium/27.png?lm=1520606999"
+            alt="Trophy Name"
+          />
+          <h3>German Cup</h3>
+        </div>
+        <div class="card-back">
+          <p>
+            This is the Trophy 1 description. It is awarded for excellence in
+            innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img
+            src="https://tmssl.akamaized.net/images/erfolge/medium/312.png?lm=1520606999"
+            alt="Trophy Name"
+          />
+          <h3>German Super Cup</h3>
+        </div>
+        <div class="card-back">
+          <p>
+            This is the Trophy 2 description. It is awarded for outstanding
+            teamwork.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img
+            src="https://tmssl.akamaized.net/images/erfolge/medium/699.png?lm=1647362865"
+            alt="Trophy Name"
+          />
+          <h3>German Regionals</h3>
+        </div>
+        <div class="card-back">
+          <p>
+            This is the Trophy 3 description. It is awarded for leadership and
+            management excellence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   let slideIndex = 0;
   let phrases = [
