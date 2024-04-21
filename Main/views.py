@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .util import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -34,6 +35,7 @@ def list_fields(request):
     fields = Field.objects.all()
     return render(request, 'Main/list_fields.html', {'fields': fields})
 
+@login_required
 def book_field(request, field_id):
     field = Field.objects.get(id=field_id)
     
@@ -42,13 +44,33 @@ def book_field(request, field_id):
         start_time = request.POST['start_time']
         end_time = request.POST['end_time']
         
-        booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)
-        booking.save()
+        try:
+            # Check for existing bookings with overlapping time intervals
+            existing_bookings = Booking.objects.filter(
+                field=field,
+                date=date,
+                start_time__lt=end_time,
+                end_time__gt=start_time
+            )
+            
+            if existing_bookings.exists():
+                # Cancel conflicting bookings
+                existing_bookings.delete()
+                
+                # Inform the user about the cancellation
+                message = 'Your booking conflicts with an existing booking and has been cancelled.'
+                return render(request, 'Main/booking_error.html', {'error_message': message, 'field': field})
+            
+            booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)
+            booking.save()
+            
+            return redirect('list_fields')
         
-        return redirect('list_fields')
-    
-    return render(request, 'Main/book_field.html', {'field': field})
+        except ValidationError as e:
+            message = str(e)
+            return render(request, 'Main/booking_error.html', {'error_message': message, 'field': field})
 
+    return render(request, 'Main/book_field.html', {'field': field})
 
 
 
