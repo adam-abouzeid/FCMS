@@ -39,7 +39,7 @@ def list_fields(request):
 def book_field(request, field_id):
     
     field = Field.objects.get(id=field_id)
-
+    books = Booking.objects.filter(field=field)
     if request.method == 'POST':
         date = request.POST['date']
         start_time = request.POST['start_time']
@@ -65,5 +65,6 @@ def book_field(request, field_id):
         return redirect('list_fields')
         
 
-    return render(request, 'Main/book_field.html', {'field': field})
+    return render(request, 'Main/book_field.html', {'field': field,
+                                                    'books': books})
 

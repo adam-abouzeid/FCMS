@@ -10,7 +10,6 @@
     width: 350px;
     border: 1px solid #000000;
     border-radius: 8px;
-    line-height: 10px;
     position: absolute;
     left: 10%;
     top: 17%;
@@ -37,7 +36,25 @@
 }
 
 .fa-arrow-left {
-    font-size:xx-large;
+    font-size: xx-large;
     color: rgb(163, 0, 0);
 }
 
+.booked {
+    /* Add styles for the container div */
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.booking-info {
+    /* Add styles for the booking information paragraphs */
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.no-booking {
+    /* Add styles for the no bookings message */
+    font-style: italic;
+    color: red;
+}

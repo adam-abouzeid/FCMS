@@ -9,7 +9,7 @@
     <div class="card-container">
         {% for field in fields %}
             <div class="card">
-                <img src="{{ field.image.url }}" alt="{{ field.name }}">
+                <img class = "image" src="{{ field.image }}" alt="{{ field.name }}">
                 <div class="card-details">
                     <h2>{{ field.name }}</h2>
                     <p>Description: {{ field.description }}</p>

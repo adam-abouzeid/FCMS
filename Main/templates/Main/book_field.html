@@ -25,5 +25,16 @@
             <input type="submit" value="Book">
         </form>
     </div>
+    <div class="booked">
+        {% if books %}
+            {% for book in books %}
+                <p class="booking-info">booked from {{ book.start_time }} to {{ book.end_time }} on {{ book.date }}</p>
+            {% endfor %}
+        {% else %}
+            <p class="no-booking">No bookings for this field.</p>
+        {% endif %}
+    </div>
+    
 </div>
+
 {% endblock%}
