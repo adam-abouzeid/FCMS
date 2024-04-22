@@ -25,6 +25,7 @@ urlpatterns = [
     path('OnlineShop/', include("OnlineShop.urls")), #new
     path('', include("Main.urls")), #new
     path('Community/', include("Community.urls")), #new
+    path('tickets/', include("TicketShop.urls")), #new
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

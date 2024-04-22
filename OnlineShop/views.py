@@ -49,21 +49,21 @@ def create_products():
     categories_data = ['Official Jerseys', 'Fan Collection', 'Scarves','Training Collection']
 
     products_data = [
-            {'name': 'RBLZ JERSEY 23/24', 'description': 'Official away team jersey', 'price': 94.95,'category': 'Official Jerseys', 'image_path': 'OnlineShop\static\images\RBLZ-Jersey-23-24 - Shortcut.lnk'},
-            {'name': 'RBL NIKE HOME JERSEY 23/24', 'description': 'Official home team jersey', 'price': 94.95,'category': 'Official Jerseys', 'image_path': 'OnlineShop\static\images\RBL-Nike-Home-Jersey-23-24 - Shortcut.lnk'},
-            {'name': 'RBL YOUTH JUMP BULLI T-SHIRT', 'description': 'RB Leipzig Bulli T-Shirt for youth', 'price': 19.95,'category': 'Fan Collection', 'image_path': 'OnlineShop\static\images\RB Leipzig Shop_ RBL Youth Jump Bulli T-Shirt _ only here at redbullshop.com - Shortcut.lnk'},
-            {'name': 'DFB POKAL', 'description': 'Cup won in 2022 and 2023', 'price': 79.95,'category': 'Fan Collection',  'image_path': 'OnlineShop\static\images\pokal - Shortcut.lnk'},
-            {'name': 'RBL Fan Beanie Navy', 'description': 'Hat with team colors and logo', 'price': 19.95,'category': 'Fan Collection', 'image_path': 'OnlineShop\static\images\cap - Shortcut.lnk'},
-            {'name': 'RB Leipzig 2024 - Fanplanner', 'description': 'Fan plans for the year', 'price': 12.95,'category': 'Fan Collection', 'image_path': 'OnlineShop\static\images\RB-Leipzig-2024-Fanplanner - Shortcut.lnk'}, 
-            {'name': 'RBL Simons Player Scarf', 'description': 'RB Leipzig Simons Player Scarf', 'price': 17.95,'category': 'Scarves', 'image_path': 'OnlineShop\static\images\simonsscarf - Shortcut.lnk'},
-            {'name': 'RBL Winter Scarf 2023', 'description': 'RB Leipzig Winter Scarf', 'price': 17.95, 'category': 'Scarves','image_path': 'OnlineShop\static\images\winterscarf - Shortcut.lnk'},
-            {'name': 'RBL Dark Scarf', 'description': 'RB Leipzig dark Scarf', 'price': 18.95,'category': 'Scarves', 'image_path': 'OnlineShop\static\images\die roten - Shortcut.lnk'},
-            {'name': 'RBL Nike Pro Training Longsleeve 23/24', 'description': 'Pro Training Longsleeve for men by Nike', 'price': 64.95,'category': 'Training Collection', 'image_path': 'OnlineShop\static\images\jacket - Shortcut.lnk'},
-            {'name': 'RBL Nike Leipzig T-Shirt 23/24', 'description': 'Leipzig T-Shirt for men by Nike', 'price': 34.95, 'category': 'Training Collection','image_path': 'OnlineShop\static\images\leipzig nike - Shortcut.lnk'},
-            {'name': 'RBL Nike Training T-Shirt 23/24', 'description': 'Leipzig T-Shirt for men by Nike', 'price': 44.95, 'category': 'Training Collection','image_path': 'OnlineShop\static\images\RBL-Nike-Training-T-Shirt-23-24 - Shortcut.lnk'},
-            {'name': 'RBL Nike Training T-Shirt 23/24', 'description': 'Training T-Shirt for women by Nike', 'price': 44.95, 'category': 'Training Collection','image_path': 'OnlineShop\static\images\training woman - Shortcut.lnk'},     
-            {'name': 'RBL Nike Training Shorts 23/24', 'description': 'Training Shorts for men by Nike', 'price': 39.95,'category': 'Training Collection', 'image_path': 'OnlineShop\static\images\shorts men - Shortcut.lnk'},
-            {'name': 'RBL Nike Training Shorts 23/24', 'description': 'Training Shorts for women by Nike', 'price': 39.95,'category': 'Training Collection', 'image_path': 'OnlineShop\static\images\shortswoman - Shortcut.lnk'}
+            {'name': 'RBLZ JERSEY 23/24', 'description': 'Official away team jersey', 'price': 94.95,'category': 'Official Jerseys', 'image_path': 'static\images\RBLZ-Jersey-23-24 - Shortcut.lnk'},
+            {'name': 'RBL NIKE HOME JERSEY 23/24', 'description': 'Official home team jersey', 'price': 94.95,'category': 'Official Jerseys', 'image_path': 'static\images\RBL-Nike-Home-Jersey-23-24 - Shortcut.lnk'},
+            {'name': 'RBL YOUTH JUMP BULLI T-SHIRT', 'description': 'RB Leipzig Bulli T-Shirt for youth', 'price': 19.95,'category': 'Fan Collection', 'image_path': 'static\images\RB Leipzig Shop_ RBL Youth Jump Bulli T-Shirt _ only here at redbullshop.com - Shortcut.lnk'},
+            {'name': 'DFB POKAL', 'description': 'Cup won in 2022 and 2023', 'price': 79.95,'category': 'Fan Collection',  'image_path': 'static\images\pokal - Shortcut.lnk'},
+            {'name': 'RBL Fan Beanie Navy', 'description': 'Hat with team colors and logo', 'price': 19.95,'category': 'Fan Collection', 'image_path': 'static\images\cap - Shortcut.lnk'},
+            {'name': 'RB Leipzig 2024 - Fanplanner', 'description': 'Fan plans for the year', 'price': 12.95,'category': 'Fan Collection', 'image_path': 'static\images\RB-Leipzig-2024-Fanplanner - Shortcut.lnk'}, 
+            {'name': 'RBL Simons Player Scarf', 'description': 'RB Leipzig Simons Player Scarf', 'price': 17.95,'category': 'Scarves', 'image_path': 'static\images\simonsscarf - Shortcut.lnk'},
+            {'name': 'RBL Winter Scarf 2023', 'description': 'RB Leipzig Winter Scarf', 'price': 17.95, 'category': 'Scarves','image_path': 'static\images\winterscarf - Shortcut.lnk'},
+            {'name': 'RBL Dark Scarf', 'description': 'RB Leipzig dark Scarf', 'price': 18.95,'category': 'Scarves', 'image_path': 'static\images\die roten - Shortcut.lnk'},
+            {'name': 'RBL Nike Pro Training Longsleeve 23/24', 'description': 'Pro Training Longsleeve for men by Nike', 'price': 64.95,'category': 'Training Collection', 'image_path': 'static\images\jacket - Shortcut.lnk'},
+            {'name': 'RBL Nike Leipzig T-Shirt 23/24', 'description': 'Leipzig T-Shirt for men by Nike', 'price': 34.95, 'category': 'Training Collection','image_path': 'static\images\leipzig nike - Shortcut.lnk'},
+            {'name': 'RBL Nike Training T-Shirt 23/24', 'description': 'Leipzig T-Shirt for men by Nike', 'price': 44.95, 'category': 'Training Collection','image_path': 'static\images\RBL-Nike-Training-T-Shirt-23-24 - Shortcut.lnk'},
+            {'name': 'RBL Nike Training T-Shirt 23/24', 'description': 'Training T-Shirt for women by Nike', 'price': 44.95, 'category': 'Training Collection','image_path': 'static\images\training woman - Shortcut.lnk'},     
+            {'name': 'RBL Nike Training Shorts 23/24', 'description': 'Training Shorts for men by Nike', 'price': 39.95,'category': 'Training Collection', 'image_path': 'static\images\shorts men - Shortcut.lnk'},
+            {'name': 'RBL Nike Training Shorts 23/24', 'description': 'Training Shorts for women by Nike', 'price': 39.95,'category': 'Training Collection', 'image_path': 'static\images\shortswoman - Shortcut.lnk'}
 
     ]
     
