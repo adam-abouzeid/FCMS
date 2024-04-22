@@ -8,12 +8,27 @@
     font-family: Arial, sans-serif;
   }
 
+  body{
+    text-align: center;
+  }
+
+  .gradient-text {
+    text-shadow: 0 0 5px #ee0979, 0 0 10px #ee0979, 0 0 15px #ff6a00, 0 0 20px #ff6a00;
+    color: transparent; 
+}
+
+
   .content {
+    margin: 0;
+    padding: 100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
     gap: 20px;
+    box-shadow: 0 0 50px white;
+    
   }
 
   .carousel {
@@ -21,10 +36,22 @@
     position: relative;
   }
 
+  .slides{
+    margin: 50px;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
   .slides img {
     width: 100%;
     display: none;
-    border-radius: 10px;
+    transition: transform 0.6s;
+  }
+
+  .slides img:hover{
+    transform: scale(1.05);
+    transition: transform 0.6s;
   }
 
   .text-block {
@@ -49,14 +76,23 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
+    box-shadow: inset 0 0 0 white;
+    transition: 0.6s;
   }
 
   .Phrases {
+    margin-bottom: 50px;
     padding-top: 10px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    text-shadow: -1px 0 #dd013f, 0 1px #dd013f, 1px 0 #dd013f, 0 -1px #dd013f;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     color: transparent;
+  }
+
+  #ExploreButton:hover{
+    color: #af2525;
+    box-shadow: inset 100px 0 0 white;
+    transition: 0.6s;
   }
 
   .header-games {
@@ -69,6 +105,8 @@
   .upcoming-games {
     margin-top: 140px;
     padding: 10px;
+    background-color: white;
+    color: linear-gradient(to left, #ee0979, #ff6a00);
   }
   .games {
     display: flex;
@@ -213,14 +251,13 @@
     <div class="Phrases">
       <h1>Been Here Since 2009</h1>
     </div>
-    <button onclick="location.href='/shop'">Explore</button>
+    <button style="margin-top: 30px;" onclick="location.href='/shop'" id="ExploreButton">Explore</button>
   </div>
   <div class="carousel">
     <div class="slides">
       {% for new in News %}
       <a href="{% url 'singleNews' new.id %}">
         <img
-          style="width: 400px; height: 300px"
           src="{{ new.Image }}"
           alt="Slide"
         />
@@ -232,7 +269,7 @@
 
 <div class="upcoming-games">
   <div class="header-games">
-    <h2>Upcoming Games</h2>
+    <h2 class="gradient-text">Upcoming Games</h2>
     <a href="{% url 'tickets' %}">View all</a>
   </div>
   <div class="games">
