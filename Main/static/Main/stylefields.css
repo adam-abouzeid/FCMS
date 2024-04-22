@@ -1,54 +1,58 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .card {
-    border: 1px solid #ccc;
+    width: 300px; /* Fixed width for each card */
+    margin: 20px;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    width: 150px; /* Fixed width */
-    height: 250px; /* Fixed height */
-    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Increase size on hover */
 }
 
 .image {
-    width: 150px;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .card-details {
-    padding: 20px;
+    padding: 15px;
 }
 
 .card-details h2 {
     margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
 }
 
-.card-details a {
+.card-details p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #666;
+}
+
+.book-button {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
     text-decoration: none;
-    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-
-.stadium-title{
-    text-align: center;
-    margin-bottom: 20px;
-    color: #d00000;
-}
-.booking-container {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;     
-    height: 100vh;          
+.book-button:hover {
+    background-color: #0056b3;
 }

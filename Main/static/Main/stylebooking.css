@@ -42,15 +42,18 @@
 
 .booked {
     /* Add styles for the container div */
+    position: absolute;
     background-color: #f4f4f4;
     padding: 10px;
     border-radius: 5px;
+    left: 50%;
 }
 
 .booking-info {
     /* Add styles for the booking information paragraphs */
     margin: 5px 0;
     font-size: 16px;
+    border: 1px solid #000000;
 }
 
 .no-booking {
