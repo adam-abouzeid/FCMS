@@ -1,0 +1,96 @@
+{% extends "Main/layout.html" %} {% load static %} {%block header%}
+<style>
+  .ticket-shop-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 8px;
+    width: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .card h2 {
+    margin-top: 15px;
+    color: #333;
+    font-size: 24px;
+  }
+
+  .card p {
+    color: #555;
+    margin: 5px 0;
+  }
+
+  .buy-ticket-btn {
+    text-decoration: none;
+    text-align: center;
+    margin-top: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c44d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  .info {
+    margin-top: 10px;
+    display: flex;
+    font-size: smaller;
+    justify-content: space-between;
+  }
+  .info p {
+    color: #555;
+  }
+</style>
+{%endblock%} {% block body %}
+<div class="ticket-shop-container">
+  <h1>RB Leipzig Ticket Shop</h1>
+  <div class="grid-container">
+    {% for game in games %}
+    <div class="card">
+      <img
+        class="card-img"
+        src="{{ game.thumbnail }}"
+        alt="Thumbnail for {{ game.name }}"
+      />
+
+      <h2>{{ game.name }}</h2>
+
+      <p style="font-size: larger; font-weight: 700">
+        ${{ game.price|floatformat:2 }}
+      </p>
+      <div class="info">
+        <p>{{ game.date|date:"D, d M Y H:i" }}</p>
+        <p>{{ game.location }}</p>
+      </div>
+      <a class="buy-ticket-btn" href="{% url 'ticket_detail' game.id %}"
+        >Buy Tickets</a
+      >
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+

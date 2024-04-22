@@ -2,18 +2,18 @@
 from django.shortcuts import render
 from .models import *
 from .util import *
-
+from TicketShop.models import Game
 # Create your views here.
 
 
 def index(request):
 
-    #STATIC 
-    #phrases = ["#We_Are_Leipzig", "#Die_Roten_Bullen","#Follow_RB_LEIPZIG!"]
-
+    recent_games = Game.objects.all().order_by("-date")[:5]  # Get the 5 most recent games
+    
     return render(request,"Main/index.html",{
         "News": getNews(),
-        "user":request.user
+        "user":request.user,
+        "games": recent_games
     })
 
 def singleNews(request, id):

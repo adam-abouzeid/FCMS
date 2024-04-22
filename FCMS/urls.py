@@ -19,7 +19,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tickets/', include("TicketShop.urls")), #new
     path('OnlineShop', include("OnlineShop.urls")), #new
     path('auth/', include("Authentication.urls")), #new
     path('', include("Main.urls")), #new
+    path('Community/', include("Community.urls")), #new
 ]
