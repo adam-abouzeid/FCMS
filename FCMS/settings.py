@@ -13,7 +13,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api	
-
+import os
 cloudinary.config( 
   	cloud_name = "slydev",
   	api_key = "729692494835934",
@@ -69,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'FCMS.urls'
@@ -150,11 +151,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "Authentication.User"
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATICFILES_DIRS = [
     BASE_DIR / 'Main/static',
     BASE_DIR / 'Authentication/static',
+    os.path.join(BASE_DIR, 'static'),
     # Other static file directories if any
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
