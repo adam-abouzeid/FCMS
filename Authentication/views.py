@@ -112,3 +112,5 @@ def profile_view(request, id):
         
     # For GET requests
     return render(request, "authentication/profile.html")
+
+
