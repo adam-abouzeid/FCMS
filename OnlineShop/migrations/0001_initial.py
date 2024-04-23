@@ -47,11 +47,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('description', models.TextField()),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-<<<<<<< HEAD
                 ('image', models.ImageField(upload_to='OnlineShop/static/pics/')),
-=======
-                ('image', models.ImageField(upload_to='products/')),
->>>>>>> 649f0a722e5b4787c89b485a88e628d5a66f8f6d
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='OnlineShop.category')),
             ],
         ),
@@ -66,19 +62,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-<<<<<<< HEAD
-=======
-            name='Refund',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('reason', models.TextField()),
-                ('accepted', models.BooleanField(default=False)),
-                ('date_requested', models.DateTimeField(auto_now_add=True)),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='OnlineShop.order')),
-            ],
-        ),
-        migrations.CreateModel(
->>>>>>> 649f0a722e5b4787c89b485a88e628d5a66f8f6d
             name='ShippingAddress',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
