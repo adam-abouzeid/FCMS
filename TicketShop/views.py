@@ -5,11 +5,11 @@ from django.contrib import messages
 from .models import Game
 import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
-@login_required
+@login_required(login_url='/auth/login/')
 def home(request):
     games = Game.objects.all()
     return render(request, 'TicketShop.html', {'games': games})
-@login_required
+@login_required(login_url='/auth/login')
 def ticket_detail(request, ticket_id):
     ticket = Game.objects.get(id=ticket_id)
     user_has_ticket = ticket.is_user_attendee(request.user)

@@ -53,7 +53,7 @@ def list_fields(request):
     fields = Field.objects.all()
     return render(request, 'Main/list_fields.html', {'fields': fields})
 
-@login_required
+@login_required(login_url='/auth/login/')
 def book_field(request, field_id):
     
     field = Field.objects.get(id=field_id)
