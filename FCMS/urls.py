@@ -16,16 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include("Authentication.urls")), #new
+    path('TicketShop/', include("TicketShop.urls")), #new
     path('OnlineShop/', include("OnlineShop.urls")), #new
-    path('', include("Main.urls")), #new
+    path('', include("Main.urls")), #newp
     path('Community/', include("Community.urls")), #new
-    path('tickets/', include("TicketShop.urls")), #new
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

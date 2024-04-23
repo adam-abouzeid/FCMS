@@ -47,7 +47,25 @@ class Player(models.Model):
         return self.Name +"/"+self.role
 
 
+class Field(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    price_per_hour = models.DecimalField(max_digits=5, decimal_places=2)
+    image = models.URLField(default="https://editorial.uefa.com/resources/0287-198ec548cd8e-23ee610c0bb8-1000/rb_leipzig_v_manchester_city_round_of_16_leg_one_-_uefa_champions_league_5_.jpeg")
 
+    def __str__(self):
+        return self.name
+
+class Booking(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    
+        
+    def __str__(self):
+        return f"{self.field.name} booked by {self.user.username} on {self.date} from {self.start_time} to {self.end_time}"
 
 
 

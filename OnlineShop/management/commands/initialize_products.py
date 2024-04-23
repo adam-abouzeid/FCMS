@@ -44,8 +44,8 @@ class Command(BaseCommand):
                 }
             )
             if product_data['image_path'] and created:
-                image_path = os.path.join(settings.MEDIA_ROOT, product_data['image_path'])
+                image_path = os.path.join(product_data['image_path'])
                 if os.path.exists(image_path):
-                        with open(image_path, 'rb') as f:
-                            product.image.save(os.path.basename(image_path), File(f), save=True)
+                    with open(image_path, 'rb') as f:
+                        product.image.save(os.path.basename(image_path), File(f), save=True)
         print("Products and categories initialized successfully.")

@@ -4,3 +4,5 @@ from . import models
 
 admin.site.register(models.News)
 admin.site.register(models.Player)
+admin.site.register(models.Booking)
+admin.site.register(models.Field)
