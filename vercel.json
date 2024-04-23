@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "FCMS/wsgi.py",
+      "user": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "FCMS/wsgi.py"
+    }
+  ]
+}
