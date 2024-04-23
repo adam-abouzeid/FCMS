@@ -1,1 +1,1 @@
-web: gunicorn FCMS.wsgi
+web: gunicorn FCMS.wsgi:application
