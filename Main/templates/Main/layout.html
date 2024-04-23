@@ -22,26 +22,27 @@
       src="https://kit.fontawesome.com/7ea2b87826.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="AIzaSyAo0SppBNAeLAH0ZoNB9SSnTc1kFrXLjb4">
 
     {% block header %} {% endblock %}
-    <style>
-      .footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        position: relative;
-        bottom: 0;
-        width: 100%;
-      }
-      .footer ul {
-        display: flex;
-      }
-    </style>
   </head>
 
   <body>
+
+
+
+    <main>
+      
+      {% block body %} {% endblock %}
+    </main>
+
+    
+    <div class="TopNavBar" style="display: none">
+      <!-- I just added this as an empty tag if anyone of you has some ideas to another navbar feel free to add-->
+    </div>
     <div class="SideNavbar">
+      
       <!--Here we should add js code to make pressing each anchor tag responsive e.g if someone hoovers over Follow us they should see a mini pop up showing social media accounts-->
       <a href="{% url 'index' %}" class="active" id="LeipzigFocus">
         <img
@@ -51,7 +52,7 @@
           height="100"
         />
       </a>
-
+  
       <hr class="navbarSeparator" />
       <a href="{% url 'news_All' %}">News</a>
       <hr class="navbarSeparator" />
@@ -83,6 +84,34 @@
         Check Our Shop!
       </a>
     </div>
-    <main>{% block body %} {% endblock %}</main>
+
+    <div style="margin-bottom: 12%;">
+     
+    </div>
+    
+
+
+    
+    <footer style="display: flex; font-size: 2em;" class="footer">
+    
+      <ul style="display: flex; list-style: none;" class="social_icon">
+        <li><a href="https://www.facebook.com/rbleipzig/" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a></li>
+        <li><a href="https://www.instagram.com/rbleipzig/" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a></li>
+        <li><a href="https://twitter.com/RBLeipzig_EN" target="_blank"><i class="fa-brands fa-twitter fa-2xl"></i></a></li>
+      </ul>
+    
+      <ul style="display: flex; list-style: none;" class="menu">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Team</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    
+      
+    </footer>
+
+
+
   </body>
 </html>
