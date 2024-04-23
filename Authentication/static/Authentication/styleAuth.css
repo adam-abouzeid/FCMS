@@ -1,19 +1,14 @@
 .card {
-  overflow: hidden;
   position: relative;
-
   width: 40%;
-  margin-top: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin: auto;
   padding: 170px 30px 54px;
   border-radius: 15px;
   background: #ffffff;
-  text-align: center;
   box-shadow: 0 100px 100px rgb(0 0 0/ 10%);
 }
 .form {
-  gap: 10px;
+    margin: auto;
 }
 
 .form-group{

@@ -25,7 +25,130 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="AIzaSyAo0SppBNAeLAH0ZoNB9SSnTc1kFrXLjb4">
 
-    {% block header %} {% endblock %}
+    {% block header %}
+      <style>
+        body .footer {
+          position: relative;
+          width: 100%;
+          bottom: 0;
+          margin-left: 5%;
+          background: linear-gradient(135deg, #dd013f 0%, #87012f 100%);
+          padding: 2rem 5%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          color: #ffffff;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .footer .social_icon li a,
+        .footer .menu li a {
+          font-size: 1rem;
+          color: #ffffff;
+          margin: 0 20px;
+          display: inline-block;
+          transition: all 0.3s ease-out;
+          text-decoration: none;
+          opacity: 0.9;
+          padding: 0.5rem;
+          border-radius: 5px;
+        }
+        
+        .footer .social_icon li a:hover,
+        .footer .menu li a:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          transform: translateY(-3px);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+          opacity: 1;
+        }
+        
+        .footer p {
+          text-align: center;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          font-size: 1.25rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+        }
+        
+
+        /* For tablets and medium-sized screens */
+        @media (max-width: 768px) {
+          .footer {
+            padding: 1.5rem 3%;
+          }
+        
+          .footer .social_icon li a,
+          .footer .menu li a {
+            font-size: 0.8rem;
+            margin: 0 10px;
+            padding: 0.4rem;
+          }
+        
+          .footer p {
+            font-size: 1rem;
+            margin-top: 0.8rem;
+            margin-bottom: 0.8rem;
+          }
+        }
+        
+        /* For mobile devices */
+        @media (max-width: 480px) {
+          .footer {
+            padding: 1rem 2%;
+          }
+        
+          .footer .social_icon li a,
+          .footer .menu li a {
+            font-size: 0.7rem;
+            margin: 0 8px;
+            padding: 0.3rem;
+          }
+        
+          .footer p {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+          }
+        
+          .footer .social_icon,
+          .footer .menu {
+            flex-direction: column;
+            align-items: center;
+          }
+        
+          .footer .social_icon li,
+          .footer .menu li {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        @media (max-width: 1024px) {
+          .SideNavbar {
+            width: 200px; /* Slightly smaller width */
+          }
+          .SideNavbar a {
+            font-size: 20px; /* Slightly smaller font size */
+            padding: 10px 10px;
+          }
+        }
+        
+        /* Adjust navbar for small screens */
+        @media (max-width: 768px) {
+          .SideNavbar {
+            width: 150px; /* Further reduce width */
+          }
+          .SideNavbar a {
+            font-size: 18px; /* Reduce font size */
+            padding: 8px 8px;
+          }
+        }
+        
+        
+      </style> 
+    {% endblock %}
   </head>
 
   <body>
@@ -93,6 +216,7 @@
 
     
     <footer style="display: flex; font-size: 2em;" class="footer">
+      
     
       <ul style="display: flex; list-style: none;" class="social_icon">
         <li><a href="https://www.facebook.com/rbleipzig/" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a></li>
@@ -109,8 +233,7 @@
       </ul>
     
       
-    </footer>
-
+    </footer> 
 
 
   </body>
