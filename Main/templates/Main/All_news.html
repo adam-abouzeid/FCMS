@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="{% static 'Main/style1.css' %}" />
 <link rel="stylesheet" href="{% static 'Main/styleIndex.css' %}" />
 <style>
+  body{
+
+    overflow-y: scroll; /* Prevent vertical scrolling */
+    width: 100%; 
+  }
   .news-header h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -98,6 +103,8 @@
 
 
 .hero-image {
+  margin: 0;
+  padding: 0;
   border-radius: 20%;
   width: 50%;
   height: 100vh;
@@ -145,6 +152,8 @@
 /* Hero Section */
 .hero-section {
   flex: 1;
+  margin: 0;
+  padding: 0;
   position: relative;
   color: #fff;
   display: flex;
@@ -269,7 +278,6 @@
       {% endfor %}
     </div>
   </div>
-
 </div> <!-- End of main container -->
 
 <script>
@@ -286,6 +294,11 @@
       }
     });
   });
+
+  function toggleScrolling() {
+    const body = document.querySelector('body');
+    body.style.overflowY = body.style.overflowY === 'hidden' ? 'scroll' : 'hidden';
+  }
 </script>
 
 {% endblock %}

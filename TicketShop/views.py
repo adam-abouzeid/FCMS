@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from .models import Game
 import stripe
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required(login_url='/auth/login/')
 def home(request):

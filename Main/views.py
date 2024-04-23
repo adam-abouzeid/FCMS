@@ -70,9 +70,8 @@ def book_field(request, field_id):
             end_time__gt=start_time
         )
             
-        if not existing_bookings.exists() or datetime.date.fromisoformat(date) >= datetime.date.today():
-            new_booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)
-                
+        if not existing_bookings.exists() and datetime.date.fromisoformat(date) >= datetime.date.today():
+            new_booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)               
             new_booking.save()
         else:
             message = 'Your booking conflicts with an existing booking and has been cancelled.'
