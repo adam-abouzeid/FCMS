@@ -23,149 +23,141 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="AIzaSyAo0SppBNAeLAH0ZoNB9SSnTc1kFrXLjb4">
+    <meta
+      name="google-signin-client_id"
+      content="AIzaSyAo0SppBNAeLAH0ZoNB9SSnTc1kFrXLjb4"
+    />
 
     {% block header %}
-      <style>
-        body .footer {
-          position: relative;
-          width: 100%;
-          bottom: 0;
-          margin-left: 5%;
-          background: linear-gradient(135deg, #dd013f 0%, #87012f 100%);
-          padding: 2rem 5%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          color: #ffffff;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+    <style>
+      body .footer {
+        position: relative;
+        width: 100%;
+        bottom: 0;
+        margin-left: 5%;
+        background: linear-gradient(135deg, #dd013f 0%, #87012f 100%);
+        padding: 2rem 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #ffffff;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .footer .social_icon li a,
+      .footer .menu li a {
+        font-size: 1rem;
+        color: #ffffff;
+        margin: 0 20px;
+        display: inline-block;
+        transition: all 0.3s ease-out;
+        text-decoration: none;
+        opacity: 0.9;
+        padding: 0.5rem;
+        border-radius: 5px;
+      }
+
+      .footer .social_icon li a:hover,
+      .footer .menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        opacity: 1;
+      }
+
+      .footer p {
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      /* For tablets and medium-sized screens */
+      @media (max-width: 768px) {
+        .footer {
+          padding: 1.5rem 3%;
         }
-        
+
         .footer .social_icon li a,
         .footer .menu li a {
-          font-size: 1rem;
-          color: #ffffff;
-          margin: 0 20px;
-          display: inline-block;
-          transition: all 0.3s ease-out;
-          text-decoration: none;
-          opacity: 0.9;
-          padding: 0.5rem;
-          border-radius: 5px;
+          font-size: 0.8rem;
+          margin: 0 10px;
+          padding: 0.4rem;
         }
-        
-        .footer .social_icon li a:hover,
-        .footer .menu li a:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-          transform: translateY(-3px);
-          box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-          opacity: 1;
-        }
-        
+
         .footer p {
-          text-align: center;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-          font-size: 1.25rem;
-          font-weight: 600;
-          letter-spacing: 0.05em;
+          font-size: 1rem;
+          margin-top: 0.8rem;
+          margin-bottom: 0.8rem;
         }
-        
+      }
 
-        /* For tablets and medium-sized screens */
-        @media (max-width: 768px) {
-          .footer {
-            padding: 1.5rem 3%;
-          }
-        
-          .footer .social_icon li a,
-          .footer .menu li a {
-            font-size: 0.8rem;
-            margin: 0 10px;
-            padding: 0.4rem;
-          }
-        
-          .footer p {
-            font-size: 1rem;
-            margin-top: 0.8rem;
-            margin-bottom: 0.8rem;
-          }
-        }
-        
-        /* For mobile devices */
-        @media (max-width: 480px) {
-          .footer {
-            padding: 1rem 2%;
-          }
-        
-          .footer .social_icon li a,
-          .footer .menu li a {
-            font-size: 0.7rem;
-            margin: 0 8px;
-            padding: 0.3rem;
-          }
-        
-          .footer p {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-          }
-        
-          .footer .social_icon,
-          .footer .menu {
-            flex-direction: column;
-            align-items: center;
-          }
-        
-          .footer .social_icon li,
-          .footer .menu li {
-            margin-bottom: 0.5rem;
-          }
+      /* For mobile devices */
+      @media (max-width: 480px) {
+        .footer {
+          padding: 1rem 2%;
         }
 
-        @media (max-width: 1024px) {
-          .SideNavbar {
-            width: 200px; /* Slightly smaller width */
-          }
-          .SideNavbar a {
-            font-size: 20px; /* Slightly smaller font size */
-            padding: 10px 10px;
-          }
+        .footer .social_icon li a,
+        .footer .menu li a {
+          font-size: 0.7rem;
+          margin: 0 8px;
+          padding: 0.3rem;
         }
-        
-        /* Adjust navbar for small screens */
-        @media (max-width: 768px) {
-          .SideNavbar {
-            width: 150px; /* Further reduce width */
-          }
-          .SideNavbar a {
-            font-size: 18px; /* Reduce font size */
-            padding: 8px 8px;
-          }
+
+        .footer p {
+          font-size: 0.9rem;
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
         }
-        
-        
-      </style> 
+
+        .footer .social_icon,
+        .footer .menu {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer .social_icon li,
+        .footer .menu li {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .SideNavbar {
+          width: 200px; /* Slightly smaller width */
+        }
+        .SideNavbar a {
+          font-size: 20px; /* Slightly smaller font size */
+          padding: 10px 10px;
+        }
+      }
+
+      /* Adjust navbar for small screens */
+      @media (max-width: 768px) {
+        .SideNavbar {
+          width: 150px; /* Further reduce width */
+        }
+        .SideNavbar a {
+          font-size: 18px; /* Reduce font size */
+          padding: 8px 8px;
+        }
+      }
+    </style>
     {% endblock %}
   </head>
 
   <body>
+    <main>{% block body %} {% endblock %}</main>
 
-
-
-    <main>
-      
-      {% block body %} {% endblock %}
-    </main>
-
-    
     <div class="TopNavBar" style="display: none">
       <!-- I just added this as an empty tag if anyone of you has some ideas to another navbar feel free to add-->
     </div>
     <div class="SideNavbar">
-      
       <!--Here we should add js code to make pressing each anchor tag responsive e.g if someone hoovers over Follow us they should see a mini pop up showing social media accounts-->
       <a href="{% url 'index' %}" class="active" id="LeipzigFocus">
         <img
@@ -175,7 +167,7 @@
           height="100"
         />
       </a>
-  
+
       <hr class="navbarSeparator" />
       <a href="{% url 'news_All' %}">News</a>
       <hr class="navbarSeparator" />
@@ -208,33 +200,34 @@
       </a>
     </div>
 
-    <div style="margin-bottom: 12%;">
-     
-    </div>
-    
+    <div style="margin-bottom: 12%"></div>
 
-
-    
-    <footer style="display: flex; font-size: 2em;" class="footer">
-      
-    
-      <ul style="display: flex; list-style: none;" class="social_icon">
-        <li><a href="https://www.facebook.com/rbleipzig/" target="_blank"><i class="fa-brands fa-facebook fa-2xl"></i></a></li>
-        <li><a href="https://www.instagram.com/rbleipzig/" target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a></li>
-        <li><a href="https://twitter.com/RBLeipzig_EN" target="_blank"><i class="fa-brands fa-twitter fa-2xl"></i></a></li>
+    <footer style="display: flex; font-size: 2em" class="footer">
+      <ul style="display: flex; list-style: none" class="social_icon">
+        <li>
+          <a href="https://www.facebook.com/rbleipzig/" target="_blank"
+            ><i class="fa-brands fa-facebook fa-2xl"></i
+          ></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/rbleipzig/" target="_blank"
+            ><i class="fa-brands fa-instagram fa-2xl"></i
+          ></a>
+        </li>
+        <li>
+          <a href="https://twitter.com/RBLeipzig_EN" target="_blank"
+            ><i class="fa-brands fa-twitter fa-2xl"></i
+          ></a>
+        </li>
       </ul>
-    
-      <ul style="display: flex; list-style: none;" class="menu">
+
+      <ul style="display: flex; list-style: none" class="menu">
         <li><a href="{% url 'index' %}">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Services</a></li>
         <li><a href="">Team</a></li>
         <li><a href="">Contact</a></li>
       </ul>
-    
-      
-    </footer> 
-
-
+    </footer>
   </body>
 </html>
