@@ -2,11 +2,7 @@
 <link rel="stylesheet" href="{% static 'Authentication/styleAuth.css' %}" />
 {% endblock %}
 <style>
-  .form-select {
-    padding: 10px;
-    background-color: red;
-    width: 100%;
-  }
+
 </style>
 {% block body %}
 <div class="card">
@@ -14,7 +10,9 @@
     <i class="fa-regular fa-futbol fa-bounce fa-2xl"></i>
     {% csrf_token %}
     <h2>Register</h2>
+    <div class="push1"></div>
     <div class="form">
+      
       <div class="form-group">
         <input
           class="form-control"

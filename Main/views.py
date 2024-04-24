@@ -62,6 +62,8 @@ def book_field(request, field_id):
         date = request.POST['date']
         start_time = request.POST['start_time']
         end_time = request.POST['end_time']
+        start_seconds = start_time.hour * 3600 + start_time.minute * 60 + start_time.second
+        end_seconds = end_time.hour * 3600 + end_time.minute * 60 + end_time.second
         
         existing_bookings = Booking.objects.filter(
             field=field,
@@ -70,7 +72,7 @@ def book_field(request, field_id):
             end_time__gt=start_time
         )
             
-        if not existing_bookings.exists() and datetime.date.fromisoformat(date) >= datetime.date.today():
+        if not existing_bookings.exists() and datetime.date.fromisoformat(date) >= datetime.date.today() and start_seconds<end_seconds:
             new_booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)               
             new_booking.save()
         else:

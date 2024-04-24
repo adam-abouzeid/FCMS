@@ -1,99 +1,98 @@
-.card {
-  position: relative;
-  width: 40%;
-  margin: auto;
-  padding: 170px 30px 54px;
-  border-radius: 15px;
-  background: #ffffff;
-  box-shadow: 0 100px 100px rgb(0 0 0/ 10%);
-}
-.form {
-    margin: auto;
-}
+  :root {
+    --main-bg-color: #ffffff;
+    --accent-color1: #dd013f;
+    --accent-color2: #216ce7;
+    --button-bg-color: #dc3545;
+    --button-text-color: #ffffff;
+  }
+  .card{
+    padding: 200px;
+  }  
 
-.form-group{
-  margin: 10px;
-
-}
-.card::before {
-  content: "";
-  position: absolute;
-  top: -880px;
-  left: 50%;
-  translate: -50% 0;
-  width: 1000px;
-  height: 1000px;
-  border-radius: 50%;
-  background: #dd013f;
-}
-
-.card::after {
-  content: "";
-  position: inherit;
-  right: -50vmin;
-  bottom: -55vmin;
-  width: inherit;
-  height: inherit;
-  border-radius: inherit;
-  background: #216ce7;
-}
-
-.card .fa-regular {
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  translate: -50% 0;
-  width: 200px;
-  height: 200px;
-}
-
-.card h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 44px;
-  font-weight: 400;
-  margin: 0 0 38px;
-  color: black;
-}
-
-@media (width<=500px) {
-  body {
-    padding: 0;
+  .push1{
+    margin-top: 20em;
+  }
+  .push{
+    margin-top: 10em;
+  }
+  .form{
+    position: relative;
+    margin-top: 3em;
   }
   .card {
-    margin: 0;
-    width: 360px;
+    width: 80%;
+    max-width: 500px;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    background: var(--main-bg-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    z-index: 2; /* Ensure card content is above animations */
   }
-}
 
-.form {
-  :is(input, button) {
+  .card::before, .card::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -100%;
+    right: -100%;
+    border-radius: 50%;
+    z-index: 1; /* Set animations behind the card content */
+  }
+
+  .card::before {
+    background: var(--accent-color1);
+    animation: rotate 8s linear infinite;
+  }
+
+  .card::after {
+    background: var(--accent-color2);
+    animation: rotateReverse 8s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes rotateReverse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+
+  .form-group {
+    margin-bottom: 2rem;
+  }
+
+  .form-control {
     width: 100%;
-    height: 56px;
-    border-radius: 14pxpx;
-    font-size: 16px;
-    font-family: inherit;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
   }
-}
-.form > input {
-  input::placeholder {
-    color: rgb(0 0 0 / 28%);
+
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--button-bg-color);
+    color: var(--button-text-color);
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
-}
 
-.form > button {
-  border: 0;
-  color: #f9f9f9;
-  background: #b41d1d;
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-  cursor: pointer;
-}
+  .btn:hover, .btn:focus {
+    background-color: darken(var(--button-bg-color), 10%);
+  }
 
-.card > .end {
-  margin-top: 15px;
-  color: #a1a1a1;
-}
-.card > .end > a {
-  color: #a02222;
-}
+  @media (max-width: 768px) {
+    .card {
+      width: 90%;
+      padding: 1rem;
+    }
+  }
