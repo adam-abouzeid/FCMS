@@ -13,7 +13,7 @@ from .models import Product, Order, OrderItem, User, Payment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-@login_required
+@login_required(login_url='/auth/login')
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
     order, created = Order.objects.get_or_create(user=request.user, complete=False)
@@ -25,7 +25,7 @@ def add_to_cart(request, product_id):
 
     return redirect('cart')
 
-@login_required
+@login_required(login_url='/auth/login')
 def remove_from_cart(request, order_item_id):
     order_item = OrderItem.objects.get(id=order_item_id)
     if order_item.quantity > 1:
@@ -35,13 +35,13 @@ def remove_from_cart(request, order_item_id):
         order_item.delete()
     return redirect('cart')
 
-@login_required
+@login_required(login_url='/auth/login')
 def cart(request):
     order = Order.objects.get(user=request.user, complete=False)
     order_items = order.orderitem_set.all()
     return render(request, 'football_shop/cart.html', {'order': order, 'order_items': order_items})
 
-@login_required
+@login_required(login_url='/auth/login')
 def checkout(request):
     order = Order.objects.get(user=request.user, complete=False)
     if request.method == 'POST':

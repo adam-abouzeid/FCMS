@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
@@ -54,11 +53,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'TicketShop',
     'OnlineShop',    #new
     'Authentication',  #new
     'Main', #new
-    'Community' #new
+    'Community' #new,
 ]
 
 MIDDLEWARE = [
