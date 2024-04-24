@@ -223,10 +223,9 @@
 
       <ul style="display: flex; list-style: none" class="menu">
         <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Services</a></li>
-        <li><a href="">Team</a></li>
-        <li><a href="">Contact</a></li>
+        <li><a href="{% url 'index' %}#about-us">About</a></li>
+        <li><a href="{% url 'OurTeam' %}">Team</a></li>
+        <li><a href="mailto:Leipzig.RB009@proton.me">Contact us</a></li>
       </ul>
     </footer>
   </body>
