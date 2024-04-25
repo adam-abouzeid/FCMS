@@ -53,7 +53,9 @@ def list_fields(request):
     fields = Field.objects.all()
     return render(request, 'Main/list_fields.html', {'fields': fields})
 
-@login_required(login_url="/auth/login/")
+
+
+@login_required
 def book_field(request, field_id):
     
     field = Field.objects.get(id=field_id)
@@ -62,9 +64,12 @@ def book_field(request, field_id):
         date = request.POST['date']
         start_time = request.POST['start_time']
         end_time = request.POST['end_time']
-        start_seconds = start_time.hour * 3600 + start_time.minute * 60 + start_time.second
-        end_seconds = end_time.hour * 3600 + end_time.minute * 60 + end_time.second
-        
+        start_time_obj = datetime.datetime.strptime(start_time, '%H:%M').time()
+        end_time_obj = datetime.datetime.strptime(end_time, '%H:%M').time()
+
+        start_seconds = start_time_obj.hour * 3600 + start_time_obj.minute * 60
+        end_seconds = end_time_obj.hour * 3600 + end_time_obj.minute * 60
+
         existing_bookings = Booking.objects.filter(
             field=field,
             date=date,
@@ -73,7 +78,8 @@ def book_field(request, field_id):
         )
             
         if not existing_bookings.exists() and datetime.date.fromisoformat(date) >= datetime.date.today() and start_seconds<end_seconds:
-            new_booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)               
+            new_booking = Booking(user=request.user, field=field, date=date, start_time=start_time, end_time=end_time)
+                
             new_booking.save()
         else:
             message = 'Your booking conflicts with an existing booking and has been cancelled.'
